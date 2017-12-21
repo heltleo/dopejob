@@ -27,4 +27,4 @@ class Booking(models.Model):
     is_approved = models.BooleanField()
     
     def __str__(self):
-        return 'Book by {} on {}'.format(self.customer, self.booking_start_date)
+        return 'Booking by {} on {}'.format(self.customer, self.booking_start_date)
