@@ -1,0 +1,9 @@
+{% if latest_cars %}
+    <ul>
+    {% for car in latest_cars %}
+        <li><a href="{% url 'detail' car.id %}">{{ car.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No cars are available.</p>
+{% endif %}
