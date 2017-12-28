@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Index{% endblock %}
+
+{% block content %}
 {% if latest_cars %}
     <ul>
     {% for car in latest_cars %}
@@ -7,3 +11,4 @@
 {% else %}
     <p>No cars are available.</p>
 {% endif %}
+{% endblock %}
