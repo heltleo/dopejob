@@ -5,7 +5,14 @@
 {% if latest_cars %}
     <ul>
     {% for car in latest_cars %}
-        <li><a href="{% url 'detail' car.id %}">{{ car.name }}</a></li>
+        <li>
+            <a href="{% url 'car-details' id=car.id %}">
+                <img src="{{ car.image.url }}" alt="{{ car.name }}"/>
+                {{ car.name }}
+                {{ car.localization }}
+                {{ car.get_car_models_display }}
+            </a>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
