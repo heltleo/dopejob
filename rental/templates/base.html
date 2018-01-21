@@ -1,5 +1,5 @@
 {% load staticfiles %}
- {% load i18n %}
+{% load i18n %}
 <!DOCTYPE html lang="en">
   <html>
   <head>
@@ -20,7 +20,7 @@
                 <li class="header-menu-list-item logo"><a href="{% url 'cars' %}" class="brand">{% trans 'ActivCar' %}</a></li>
                 <li class="header-menu-list-item"><a href="#">{% trans 'Rent a car' %}</a></li>
                 <li class="header-menu-list-item"><a href="#">{% trans 'Pricing' %}</a></li>
-                <li class="header-menu-list-item"><a href="#">{% trans 'About' %}</a></li>
+                <li class="header-menu-list-item"><a href="/pages/about">{% trans 'About' %}</a></li>
                 <li class="header-menu-list-item"><a href="#">{% trans 'Contact' %}</a></li>
                 <li class="header-menu-list-item"><a href="#">{% trans 'Sign in' %}</a></li>
             </ul>
