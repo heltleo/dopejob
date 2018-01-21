@@ -4,6 +4,8 @@ body {font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: normal
 a { text-decoration: none; color: #d5d5d5; }
 a:hover {color: black;}
 .container { max-width: 90%; margin: 0 auto; width: 100%; }
+.brand { color: black; }
+.brand:hover { color: black; }
 .header {padding: 10px 0; border-bottom: 2px solid #e5e5e5; }
 .header-menu-list { display: flex; position: relative; justify-content: space-between; }
 .header-menu-list-item.logo { justify-content:flex-start;  flex-grow: 5; }
