@@ -64,3 +64,31 @@ class Booking(models.Model):
 
     def __str__(self):
         return 'Booking by {} on {}'.format(self.customer, self.booking_start_date)
+
+
+class Contact(models.Model):
+    GENERAL = 'GE'
+    PAYMENT = 'PA'
+    CAREERS = 'CA'
+    TECHNICAL = 'TE'
+    TOPIC_CHOICES = (
+        (GENERAL,'General informations'),
+        (PAYMENT, 'Payment'),
+        (CAREERS, 'Careers'),
+        (TECHNICAL, 'Technical support'),
+    )
+    name = models.CharField(max_length=150)
+    email = models.EmailField(max_length=250)
+    topic = models.CharField(
+        max_length=2,
+        choices=TOPIC_CHOICES,
+        default=GENERAL,
+    )
+    message = models.CharField(max_length=1000)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        ordering = ('-timestamp',)

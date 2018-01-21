@@ -22,8 +22,9 @@ a:hover {color: black;}
 .cars-reference { display: flex; flex-direction: row; justify-content: center; align-items: center; }
 .cars-reference .image { max-width: 80px; width: 100%; height: auto; }
 .cars-reference.cars-description {flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 2; margin-left: 1%; }
-.button { border-radius: 15px; box-shadow: 0 1px 2px #383838; padding: 5px 15px; text-align: center; display: inline-block; margin-top: 5px; margin-bottom: 8px; color: white; }
+.button { border-radius: 15px; box-shadow: 0 1px 2px #383838; padding: 5px 15px; text-align: center; display: inline-block; margin-top: 5px; margin-bottom: 8px; color: white; appearance: none; -webkit-appearance: none; border: 0 none; font-size: 1em; cursor: pointer; }
 .button:hover { color: white; }
+.button:focus {outline: 0 none; }
 .button.button-primary { background-color: #aa8cc5; }
 @media screen and (max-width: 640px) {
     .container {max-width: 100%; padding-left: 15px; padding-right: 15px; }
