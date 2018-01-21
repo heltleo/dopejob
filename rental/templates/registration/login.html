@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Login in{% endblock %}
+
+{% block content %}
+<div class="panel">
+
+    {% if form.errors %}
+       <p>
+         Your username/e-mail and password didn't match.
+         Please try again.
+       </p>
+     {% else %}
+       <p>Please, use the following form to log in:</p>
+     {% endif %}
+
+     <p>Doesn't have an account ? <a href="">Sign up</a> </p>
+
+    <div class="formset">
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <input type="submit" class="button button-primary" value="Log in" />
+        </form>
+
+    </div>
+
+
+</div>
+{% endblock %}

@@ -22,7 +22,11 @@
                 <li class="header-menu-list-item"><a href="#">{% trans 'Pricing' %}</a></li>
                 <li class="header-menu-list-item"><a href="/pages/about">{% trans 'About' %}</a></li>
                 <li class="header-menu-list-item"><a href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
-                <li class="header-menu-list-item"><a href="#">{% trans 'Sign in' %}</a></li>
+                {% if request.user.is_authenticated %}
+                <li class="header-menu-list-item"><a href="{% url 'logout' %}">{% trans 'Log out' %}</a></li>
+                {% else %}
+                <li class="header-menu-list-item"><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
