@@ -1,1 +1,31 @@
-* {box-sizing: border-box;}
+* {box-sizing: border-box; margin: 0; padding: 0; list-style: none;}
+body {font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: normal; }
+.logo {font-family: 'Shrikhand', cursive; font-size: 1.3em; color: black; text-transform: none; }
+a { text-decoration: none; color: #d5d5d5; }
+a:hover {color: black;}
+.container { max-width: 90%; margin: 0 auto; width: 100%; }
+.header {padding: 10px 0; border-bottom: 2px solid #e5e5e5; }
+.header-menu-list { display: flex; position: relative; justify-content: space-between; }
+.header-menu-list-item.logo { justify-content:flex-start;  flex-grow: 5; }
+.header-menu-list-item { display: flex; justify-content: center; align-items: center; flex-grow: 1; }
+.header-menu-list-item:not(.logo) {text-transform: uppercase; font-size: 0.8em; }
+.body {background-color: #e5e5e5; height: 100%; }
+.row { display: table; clear: both; float: none; width: 100%; padding-top: 20px; }
+.column { display: inline-block; float: left; vertical-align: top;}
+.column.col3 {width: 30%; }
+.column.col6 {width: 70%; }
+.menu-list-cars-item { background-color: #fff; margin-top: 20px; border-radius: 4px; box-shadow: 0 1px 2px #d5d5d5; padding: 5px 10px; }
+.menu-list-cars-item:first-child { margin-top: 0; }
+.cars { display: flex; justify-content: space-between; }
+.cars-reference { display: flex; flex-direction: row; justify-content: center; align-items: center; }
+.cars-reference .image { max-width: 80px; width: 100%; height: auto; }
+.cars-reference.cars-description {flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 2; margin-left: 1%; }
+.button { border-radius: 15px; box-shadow: 0 1px 2px #383838; padding: 5px 15px; text-align: center; display: inline-block; margin-top: 5px; margin-bottom: 8px; color: white; }
+.button:hover { color: white; }
+.button.button-primary { background-color: #aa8cc5; }
+@media screen and (max-width: 640px) {
+    .container {max-width: 100%; padding-left: 15px; padding-right: 15px; }
+    .column { float: none; display: block; }
+    .column.col3 {display: none; }
+    .column.col6 { width: 100%; }
+}

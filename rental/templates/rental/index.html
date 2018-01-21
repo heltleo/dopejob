@@ -1,21 +1,36 @@
 {% extends 'base.html' %}
-{% block title %}Index{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Cars' %}{% endblock %}
 
 {% block content %}
-{% if latest_cars %}
-    <ul>
-    {% for car in latest_cars %}
-        <li>
-            <a href="{% url 'car-details' id=car.id %}">
-                <img src="{{ car.image.url }}" alt="{{ car.name }}"/>
-                {{ car.name }}
-                {{ car.localization }}
-                {{ car.get_car_models_display }}
-            </a>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No cars are available.</p>
-{% endif %}
+<div class="row">
+    <div class="column col3">
+        <div class="form-location">
+            <form action="" method="post">
+                <input type="search" placeholder="Enter your city" />
+            </form>
+        </div>
+    </div>
+    <div class="column col6">
+        <a class="button button-primary" href="">{% trans 'Rent a car' %}</a>
+    {% if latest_cars %}
+        <ul class="menu-list-cars">
+        {% for car in latest_cars %}
+            <li class="menu-list-cars-item">
+                <a href="{% url 'car-details' id=car.id %}" class="cars">
+                    <div class="cars-reference"><img src="{{ car.image.url }}" class="image"alt="{{ car.name }}"/></div>
+                    <div class="cars-reference cars-description">
+                        <div class="car-name">{{ car.name }}</div>
+                        <div class="cars-meta">{{ car.get_car_models_display }} • {{ car.daily_rent }} €</div>
+                    </div>
+                    <div class="cars-reference">{{ car.localization }}</div>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>{% trans 'No cars are available.' %}</p>
+    {% endif %}
+    </div>
+</div>
 {% endblock %}
