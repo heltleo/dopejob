@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_NAME = 'activcar'
 
 # Application definition
 
@@ -139,3 +140,7 @@ from django.urls import reverse_lazy
 LOGIN_REDIRECT_URL = reverse_lazy('cars')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
+
+DEFAULT_FROM_EMAIL = 'no-repy@activcar.com'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

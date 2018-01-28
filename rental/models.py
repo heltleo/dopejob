@@ -27,10 +27,10 @@ class Car(models.Model):
         (MONOSPACE, 'Monospace'),
     )
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='car_images')
+    image = models.ImageField(upload_to='car_images', blank=True)
     description = models.TextField()
     daily_rent = models.IntegerField()
-    is_available = models.BooleanField()
+    is_available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     localization = models.CharField(max_length=100, blank=True, null=True)
     car_models = models.CharField(

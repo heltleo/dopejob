@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Join the community' %}{% endblock %}
+
+{% block content %}
+<div class="panel">
+
+    <div class="formset">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <input type="submit" class="button button-primary" value="Sign up" />
+        </form>
+
+    </div>
+
+
+</div>
+{% endblock %}
