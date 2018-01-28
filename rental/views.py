@@ -4,12 +4,17 @@ from django.template import loader
 from django.contrib import messages
 from rental.forms import ContactForm
 from rental.models import Car, Booking, Contact
+from rental.filters import CarFilter
 
 # Create your views here.
 def index(request):
-    latest_cars = Car.objects.order_by('-created')[:5]
+    # latest_cars = Car.objects.order_by('-created')[:20]
+    list_cars = Car.objects.all()
+    car_filter = CarFilter(request.GET, queryset=list_cars)
+
     context = {
-        'latest_cars': latest_cars,
+        'filter': car_filter,
+        # 'latest_cars': latest_cars
     }
     return render(request, 'rental/index.html', context)
 
