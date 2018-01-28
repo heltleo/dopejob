@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 from django.template import loader
 from django.contrib import messages
+from django.views.generic.base import TemplateView
 from rental.forms import ContactForm
 from rental.models import Car, Booking, Contact
 from rental.filters import CarFilter
@@ -38,3 +39,6 @@ def contact(request):
     else:
         form = ContactForm()
     return render(request, 'contact/contact.html', {'form': form})
+
+class PricingView(TemplateView):
+    template_name='rental/pricing.html'

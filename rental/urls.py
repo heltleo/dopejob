@@ -8,4 +8,5 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('login', auth_views.login, name='login'),
     path('logout', auth_views.logout, name='logout'),
+    path('pricing', views.PricingView.as_view(), name='pricing'),
 ]
