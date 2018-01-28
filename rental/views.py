@@ -8,9 +8,8 @@ from rental.filters import CarFilter
 
 # Create your views here.
 def index(request):
-    # latest_cars = Car.objects.order_by('-created')[:20]
-    list_cars = Car.objects.all()
-    car_filter = CarFilter(request.GET, queryset=list_cars)
+    latest_cars = Car.objects.order_by('-created')
+    car_filter = CarFilter(request.GET, queryset=latest_cars)
 
     context = {
         'filter': car_filter,
