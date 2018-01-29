@@ -8,8 +8,18 @@
     <div class="formset">
         <form action="" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="hidden" name="next" value="{{ next }}" />
+            {% for field in form %}
+              <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                  <p class="help-text">{{ field.help_text }}</p>
+                {% endif %}
+                {% for error in field.errors %}
+                  <p class="error">{{ error }}</p>
+                {% endfor %}
+              </p>
+            {% endfor %}
             <input type="submit" class="button button-primary" value="Sign up" />
         </form>
 
