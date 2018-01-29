@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="column col6">
-        <a class="button button-primary" href="">{% trans 'Rent a car' %}</a>
+        <a class="button button-primary" href="{% url 'rent_a_car' %}">{% trans 'Rent a car' %}</a>
         <ul class="menu-list-cars">
             {% for car in filter.qs %}
                 <li class="menu-list-cars-item">
