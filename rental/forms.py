@@ -40,8 +40,8 @@ class UserCreationForm(UserCreationForm):
 
 
 class BookingCarForm(ModelForm):
-    booking_start_date = forms.DateTimeField(required=False)
-    booking_end_date = forms.DateTimeField(required=False)
+    booking_start_date = forms.DateTimeField(required=True, help_text='debut rent')
+    booking_end_date = forms.DateTimeField(required=True, help_text='end rent')
 
     class Meta:
         model = Booking
