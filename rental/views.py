@@ -12,7 +12,7 @@ from django.conf import settings
 from django.utils.translation import ugettext as _
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
-from rental.forms import ContactForm, PostCarForm, UserCreationForm
+from rental.forms import ContactForm, PostCarForm, UserCreationForm, BookingCarForm
 from rental.models import Car, Booking, Contact
 from rental.filters import CarFilter
 
@@ -29,11 +29,32 @@ def index(request):
 
 def detail(request, id):
     car = get_object_or_404(Car, pk=id)
+    form = BookingCarForm()
+
+    if request.method == 'POST':
+        form = BookingCarForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.customer = request.user
+            booking.is_approved = False
+            car.is_available = False
+            booking.save()
+            return redirect('car-details', id=car.id)
+        else:
+            print(forms.errors)
+    else:
+        form = BookingCarForm(data=request.GET)
+
     #try:
         #car = Car.objects.get(pk=id)
     #except Car.DoesNotExist:
         #raise Http404('Car does not exist.')
-    return render(request, 'rental/detail.html', {'car': car})
+
+    context = {
+        'car': car,
+        'form': form
+    }
+    return render(request, 'rental/detail.html', context)
 
 def contact(request):
     if request.method == 'POST':
@@ -84,7 +105,7 @@ class RegistrationFormView(FormView):
         msg.content_subtype = "html"
         msg.send(fail_silently=True)
 
-        return render(self.request, "authentication/check_your_mail.html")
+        return redirect('rent_a_car')
 
 @login_required
 def post_car_detail(request):
@@ -104,4 +125,4 @@ def post_car_detail(request):
 
     context = {'form':form}
 
-    return render(request, 'rental/rent_car.html', context)
+    return render(request, 'rental/forms/rent_car.html', context)

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}{{ car.name }}{% endblock %}
 
 {% block content %}
@@ -12,4 +13,9 @@
 {{ car.description }}
 {{ car.get_car_models_display }}
 {{ car.daily_rent }} €
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="button button-primary" value="{% trans 'Bookmark this car' %}" />
+</form>
 {% endblock %}

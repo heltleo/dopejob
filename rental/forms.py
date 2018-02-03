@@ -25,6 +25,7 @@ class PostCarForm(ModelForm):
 
 class UserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    password1 = forms.CharField(widget=forms.PasswordInput, label='Password')
 
     class Meta:
         model = User
@@ -36,3 +37,12 @@ class UserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class BookingCarForm(ModelForm):
+    booking_start_date = forms.DateTimeField(required=False)
+    booking_end_date = forms.DateTimeField(required=False)
+
+    class Meta:
+        model = Booking
+        fields = ('booking_start_date', 'booking_end_date',)
