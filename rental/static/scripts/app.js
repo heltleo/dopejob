@@ -10,5 +10,5 @@ var prepareFormBase = function() {
 };
 
 $(function() {
-  prepareFormBase();
+  //prepareFormBase();
 });

@@ -19,12 +19,16 @@
         <div class="container">
             <ul class="header-menu-list">
                 <li class="header-menu-list-item logo"><a href="{% url 'cars' %}" class="brand">{% trans 'Activcar' %}</a></li>
-                <li class="header-menu-list-item"><a href="{% url 'rent_a_car' %}">{% trans 'Rent a car' %}</a></li>
                 <li class="header-menu-list-item"><a href="{% url 'pricing' %}">{% trans 'Pricing' %}</a></li>
                 <li class="header-menu-list-item"><a href="/pages/about">{% trans 'About' %}</a></li>
                 <li class="header-menu-list-item"><a href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
                 {% if request.user.is_authenticated %}
-                <li class="header-menu-list-item"><a href="{% url 'logout' %}">{% trans 'Log out' %}</a></li>
+                <li class="header-menu-list-item menu-hover"><a href="#">{% trans 'Dashboard' %}</a>
+                    <ul class="submenu-list">
+                        <li class="submenu-list-item"><a href="{% url 'rent_a_car' %}">{% trans 'Rent a car' %}</a></li>
+                        <li class="submenu-list-item"><a href="{% url 'logout' %}">{% trans 'Log out' %}</a></li>
+                    <ul>
+                </li>
                 {% else %}
                 <li class="header-menu-list-item"><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
                 {% endif %}

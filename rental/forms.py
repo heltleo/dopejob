@@ -16,6 +16,7 @@ class ContactForm(ModelForm):
 
 class PostCarForm(ModelForm):
     image = forms.ImageField(required=False)
+    description = forms.CharField(widget=forms.Textarea, help_text='Details of the vehicle.')
 
     class Meta:
         model = Car
