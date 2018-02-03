@@ -1,6 +1,6 @@
 * {box-sizing: border-box; margin: 0; padding: 0; list-style: none;}
 body {font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: normal; }
-.logo {font-family: 'Permanent Marker', cursive; font-size: 1.3em; color: black; text-transform: none; }
+.logo {font-weight: bold; font-size: 1.3em; color: black; text-transform: none; }
 a { text-decoration: none; color: #d5d5d5; }
 a:hover {color: black;}
 .container { max-width: 90%; margin: 0 auto; width: 100%; }

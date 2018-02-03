@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Login in{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Sign in' %}{% endblock %}
 
 {% block content %}
 <div class="panel">
+
+    <h2>{% trans 'Sign in' %}</h2>
 
     {% if form.errors %}
        <p>
@@ -18,7 +21,18 @@
     <div class="formset">
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+            {% for field in form %}
+            <div class="form-ui-control">
+                {{ field.label_tag }}<br/>
+                {{ field }}
+                {% if field.help_text %}
+                  <p class="helptext">{{ field.help_text }}</p>
+                {% endif %}
+                {% for error in field.errors %}
+                  <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+            {% endfor %}
             <input type="hidden" name="next" value="{{ next }}" />
             <input type="submit" class="button button-primary" value="Log in" />
         </form>

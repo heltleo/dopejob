@@ -3,7 +3,7 @@
 
 {% block content %}
 <h1>{{ car.name }}</h1>
-<img src="{{ car.image.url }}" alt="{{ car.name }}"/>
+<img src="{{ car.image.url|default_if_none:'#' }}" alt="{{ car.name }}"/>
 {{ car.localization }}
 {{ car.description }}
 {{ car.get_car_models_display }}

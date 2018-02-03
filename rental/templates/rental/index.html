@@ -18,7 +18,7 @@
             {% for car in filter.qs %}
                 <li class="menu-list-cars-item">
                     <a href="{% url 'car-details' id=car.id %}" class="cars">
-                        <div class="cars-reference"><img src="{{ car.image.url }}" class="image"alt="{{ car.name }}"/></div>
+                        <div class="cars-reference"><img src="{{ car.image.url|default_if_none:'#' }}" class="image"alt="{{ car.name }}"/></div>
                         <div class="cars-reference cars-description">
                             <div class="car-name">{{ car.name }}</div>
                             <div class="cars-meta">{{ car.get_car_models_display }} • {{ car.daily_rent }} €</div>

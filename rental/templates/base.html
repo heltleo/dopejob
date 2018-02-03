@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>activcar - {% block title %}{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles/app.css' %}">
   </head>
 
@@ -17,8 +17,7 @@
     <div class="header">
         <div class="container">
             <ul class="header-menu-list">
-                <li class="header-menu-list-item logo"><a href="{% url 'cars' %}" class="brand">{% trans 'ActivCar' %}</a></li>
-               <li class="header-menu-list-item"><a href="{% url 'rent_a_car' %}">{% trans 'Buy a car' %}</a></li>
+                <li class="header-menu-list-item logo"><a href="{% url 'cars' %}" class="brand">{% trans 'Activcar' %}</a></li>
                 <li class="header-menu-list-item"><a href="{% url 'rent_a_car' %}">{% trans 'Rent a car' %}</a></li>
                 <li class="header-menu-list-item"><a href="{% url 'pricing' %}">{% trans 'Pricing' %}</a></li>
                 <li class="header-menu-list-item"><a href="/pages/about">{% trans 'About' %}</a></li>
@@ -43,6 +42,7 @@
             {% block content %}{% endblock %}
         </div>
     </div>
+    <script type="text/javascript" src="{% static 'scripts/libs/jquery-3.3.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'scripts/app.js' %}"></script>
 </body>
 

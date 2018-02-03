@@ -94,10 +94,13 @@ def post_car_detail(request):
         form = PostCarForm(request.POST, request.FILES)
         if form.is_valid():
             car = form.save(commit=False)
+            car.owner = request.user
             car.save()
             return redirect('cars')
         else:
             print(form.errors)
+    else:
+        form = PostCarForm(data=request.GET)
 
     context = {'form':form}
 

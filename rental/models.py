@@ -27,12 +27,13 @@ class Car(models.Model):
         (MONOSPACE, 'Monospace'),
     )
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='car_images', blank=True)
+    image = models.ImageField(upload_to='car_images/%Y/%m/%d/', blank=True)
     description = models.TextField()
     daily_rent = models.IntegerField()
     is_available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     localization = models.CharField(max_length=100, blank=True, null=True)
+    owner = models.ForeignKey(User, on_delete=models.PROTECT)
     car_models = models.CharField(
         max_length=2,
         choices=CARS_MODEL_CHOICES,
@@ -42,6 +43,11 @@ class Car(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
+    @property
+    def image_url(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
 
     def get_absolute_url(self):
         return reverse('car-details', kwargs={'pk', self.pk})
