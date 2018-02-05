@@ -13,9 +13,13 @@
 {{ car.description }}
 {{ car.get_car_models_display }}
 {{ car.daily_rent }} €
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="button button-primary" value="{% trans 'Bookmark this car' %}" />
-</form>
+{% if request.user.is_authenticated %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="button button-primary" value="{% trans 'Rent this car' %}" />
+    </form>
+{% else %}
+    {% trans 'You must be login to rent a car' %}
+{% endif %}
 {% endblock %}
