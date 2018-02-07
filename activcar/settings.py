@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'dj_pagination',
+    'storages',
 ]
 
 SITE_ID = 1
