@@ -18,8 +18,8 @@
             <a class="button button-primary" href="{% url 'rent_a_car' %}">{% trans 'Rent a car' %}</a>
         </div>
         <ul class="menu-list-cars">
-            {% autopaginate filter 10 %}
-            {% for car in filter.qs %}
+            {% autopaginate filter.qs 10 as filter_search %}
+            {% for car in filter_search %}
                 <li class="menu-list-cars-item">
                     <a href="{% url 'car-details' id=car.id %}" class="cars">
                         <div class="cars-reference">
