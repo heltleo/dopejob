@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'pagination',
 ]
 
 SITE_ID = 1
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 ]
 
 ROOT_URLCONF = 'activcar.urls'
