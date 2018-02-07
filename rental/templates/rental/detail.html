@@ -13,7 +13,7 @@
 {{ car.localization }}
 {{ car.description }}
 {{ car.get_car_models_display }}
-{{ car.daily_rent }} €
+{{ car.daily_rent }} € {% trans 'per days' %}
 {% if request.user.is_authenticated %}
     <form action="" method="POST">
         {% csrf_token %}
@@ -21,6 +21,6 @@
         <input type="submit" class="button button-primary" value="{% trans 'Rent this car' %}" />
     </form>
 {% else %}
-    {% trans 'You must be login to rent a car' %}
+    <em>{% trans 'You must be login to rent a car' %}</em>
 {% endif %}
 {% endblock %}

@@ -8,3 +8,4 @@ whitenoise>=3.2
 dj-database-url>=0.4.1
 django-filter==1.1.0
 dj-pagination==2.3.2
+python-decouple==3.1
