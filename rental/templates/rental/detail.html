@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load staticfiles %}
 {% block title %}{{ car.name }}{% endblock %}
 
 {% block content %}
@@ -7,7 +8,7 @@
 {% if car.image %}
     <img src="{{ car.image.url|default_if_none:'#' }}" class="image"alt="{{ car.name }}"/>
 {% else %}
-    <i class="icon ion-ios-help-empty"></i>
+    <img src="{% static 'images/none.png' %}" class="image" alt="{{ car.name }}" />
 {% endif %}
 {{ car.localization }}
 {{ car.description }}
