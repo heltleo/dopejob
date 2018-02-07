@@ -29,7 +29,7 @@ class Car(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='car_images/%Y/%m/%d/', blank=True)
     description = models.TextField()
-    daily_rent = models.IntegerField()
+    daily_rent = models.DecimalField(max_digits=5, decimal_places=2)
     is_available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     localization = models.CharField(max_length=100, blank=True, null=True)

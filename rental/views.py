@@ -103,7 +103,7 @@ class RegistrationFormView(FormView):
                 }, [user.email])
 
         msg.content_subtype = "html"
-        msg.send()
+        msg.send(fail_silently=True)
 
         return redirect('rent_a_car')
 
