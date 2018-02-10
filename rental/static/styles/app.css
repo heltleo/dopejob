@@ -38,6 +38,10 @@ a:hover {color: black;}
 .alert-messages.alert-success { background-color: #00e500; }
 .alert-messages.alert-error { background-color: #ea3232; }
 .alert-messages.alert-info { background-color: #99ccff; }
+.pagination { margin-top: 20px; text-align: center; }
+.pagination .page, .pagination .prev, .pagination .next { color: #222; display: inline-block; padding: 10px 18px; text-align: center; }
+.pagination .prev, .pagination .next { width: auto; height: auto; }
+.pagination .current.page { font-weight: bold; border-bottom: 3px solid #aa8cc5; }
 .align-right { text-align: right; }
 .align-left { text-align: left; }
 .fl-left { float: left; }
