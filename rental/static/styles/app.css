@@ -22,10 +22,10 @@ a:hover {color: black;}
 .cars-reference { display: flex; flex-direction: row; justify-content: center; align-items: center; }
 .cars-reference .image { max-width: 80px; width: 100%; height: auto; }
 .cars-reference.cars-description {flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 2; margin-left: 1%; }
-.button { border-radius: 15px; box-shadow: 0 1px 2px #383838; padding: 5px 15px; text-align: center; display: inline-block; margin-top: 5px; margin-bottom: 8px; color: white; appearance: none; -webkit-appearance: none; border: 0 none; text-transform: uppercase; font-size: 1em; cursor: pointer; }
+.button, button[type="submit"], input[type="submit"] { border-radius: 15px; box-shadow: 0 1px 2px #383838; padding: 5px 15px; text-align: center; display: inline-block; margin-top: 5px; margin-bottom: 8px; color: white; appearance: none; -webkit-appearance: none; border: 0 none; text-transform: uppercase; font-size: 1em; cursor: pointer; }
 .button:hover { color: white; }
 .button:focus {outline: 0 none; }
-.button.button-primary { background-color: #aa8cc5; }
+.button.button-primary, button[type="submit"], input[type="submit"] { background-color: #aa8cc5; }
 .button.button-secondary { background-color: #0d98ba; }
 .submenu-list { background-color: #fff; border-radius: 0; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); left: -12px; position: absolute; top: 38px; -webkit-transition: all 0.25s; transition: all 0.25s; visibility: hidden; width: 200px; padding: 12px; }
 .header-menu-list-item.menu-hover { position: relative; }
@@ -34,6 +34,7 @@ a:hover {color: black;}
 .header-menu-list-item.menu-hover .submenu-list::before {border-left: 6px solid transparent;border-right: 6px solid transparent;border-bottom: 6px solid white;content: "";height: 0;left: 10%;position: absolute;top: -6px;width: 0;}
 .alert-container { padding-top: 10px; }
 .alert-messages { padding: 10px 15px; color: white; border-radius: 5px; }
+.alert-messages:nth-child(n+2) { margin-top: 10px; }
 .alert-messages.alert-success { background-color: #00e500; }
 .alert-messages.alert-error { background-color: #ea3232; }
 .alert-messages.alert-info { background-color: #99ccff; }
