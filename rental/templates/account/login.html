@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Sign in' %}{% endblock %}
+
+{% block content %}
+<div class="panel">
+
+    <h2>{% trans 'Sign in' %}</h2>
+
+    {% if form.errors %}
+       <p>
+         Your username/e-mail and password didn't match.
+         Please try again.
+       </p>
+     {% else %}
+       <p>Please, use the following form to log in:</p>
+     {% endif %}
+
+     <p>Doesn't have an account ? <a href="{% url 'account_signup' %}">Sign up</a> </p>
+
+    <div class="formset">
+        <form action="{% url 'account_login' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <a class="button button-secondary" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            <button class="button button-primary" type="submit">{% trans "Sign In" %}</button>
+        </form>
+
+    </div>
+
+
+</div>
+{% endblock %}
