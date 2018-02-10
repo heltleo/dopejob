@@ -46,9 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.google',
-    # 'allauth.socialaccount.providers.facebook',
-    # 'allauth.socialaccount.providers.paypal',
+    'allauth.socialaccount.providers.facebook',
     'dj_pagination',
     'storages',
 ]
@@ -148,7 +146,9 @@ DEFAULT_FROM_EMAIL = 'no-repy@activcar.com'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Dango Allauth settings
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_LOGOUT_REDIRECT_URL= "/"
 ACCOUNT_EMAIL_REQUIRED = True
 SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"

@@ -1,22 +1,35 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load account socialaccount %}
 {% block title %}{% trans 'Sign in' %}{% endblock %}
 
 {% block content %}
 <div class="panel">
 
     <h2>{% trans 'Sign in' %}</h2>
+    {% get_providers as socialaccount_providers %}
 
-    {% if form.errors %}
-       <p>
-         Your username/e-mail and password didn't match.
-         Please try again.
-       </p>
-     {% else %}
-       <p>Please, use the following form to log in:</p>
-     {% endif %}
+    {% if socialaccount_providers %}
+<p>{% blocktrans with site.name as site_name %}Please sign in with one
+of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
-     <p>Doesn't have an account ? <a href="{% url 'account_signup' %}">Sign up</a> </p>
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+
+  <div class="login-or">{% trans 'or' %}</div>
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+<p>{% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+{% endif %}
 
     <div class="formset">
         <form action="{% url 'account_login' %}" method="POST">
@@ -31,7 +44,5 @@
         </form>
 
     </div>
-
-
 </div>
 {% endblock %}

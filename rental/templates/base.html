@@ -38,9 +38,9 @@
     <div class="body">
         <div class="container">
             {% if messages %}
-            <ul class="messages">
+            <ul class="alert-container">
                 {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <li{% if message.tags %} class="alert-messages alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
                 {% endfor %}
             </ul>
             {% endif %}
