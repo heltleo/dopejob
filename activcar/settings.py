@@ -141,7 +141,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 
-DEFAULT_FROM_EMAIL = 'no-repy@activcar.com'
+DEFAULT_FROM_EMAIL = 'no-reply@activcar.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
