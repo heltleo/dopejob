@@ -29,6 +29,7 @@ DEBUG = config('DEBUG')
 ALLOWED_HOSTS = []
 
 SITE_NAME = 'activcar'
+SITE_ID = 1
 
 # Application definition
 
@@ -42,11 +43,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.paypal',
     'dj_pagination',
     'storages',
 ]
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -138,13 +143,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 
-
-from django.urls import reverse_lazy
-
-LOGIN_REDIRECT_URL = reverse_lazy('cars')
-LOGIN_URL = reverse_lazy('login')
-LOGOUT_URL = reverse_lazy('logout')
-
 DEFAULT_FROM_EMAIL = 'no-repy@activcar.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Dango Allauth settings
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False

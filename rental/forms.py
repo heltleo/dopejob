@@ -1,8 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from django.core.files.base import ContentFile
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from .models import Contact, Car, Booking
 
 
@@ -21,15 +19,6 @@ class PostCarForm(ModelForm):
     class Meta:
         model = Car
         fields = ('name', 'image', 'description', 'daily_rent', 'localization', 'car_models',)
-
-
-class UserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-    password1 = forms.CharField(widget=forms.PasswordInput, label='Password')
-
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2',)
 
 
 class BookingCarForm(ModelForm):

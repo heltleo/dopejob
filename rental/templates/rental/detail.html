@@ -13,7 +13,7 @@
 {{ car.localization }}
 {{ car.description }}
 {{ car.get_car_models_display }}
-{{ car.daily_rent }} € {% trans 'per days' %}
+{{ car.daily_rent|floatformat:2 }} € {% trans 'per days' %}
 {% if request.user.is_authenticated %}
     <form action="" method="POST">
         {% csrf_token %}

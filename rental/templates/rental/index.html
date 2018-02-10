@@ -16,7 +16,7 @@
     </div>
     <div class="column col6">
         <div class="align-right">
-            <a class="button button-primary" href="{% url 'rent_a_car' %}">{% trans 'Rent a car' %}</a>
+            <a class="button button-primary" href="{% url 'post_a_car' %}">{% trans 'Rent a car' %}</a>
         </div>
         <ul class="menu-list-cars">
             {% autopaginate filter.qs 10 as filter_search %}
@@ -32,7 +32,7 @@
                         </div>
                         <div class="cars-reference cars-description">
                             <div class="car-name">{{ car.name }}</div>
-                            <div class="cars-meta">{{ car.get_car_models_display }} &bull; {{ car.daily_rent }} €  &bull; {{ car.owner }}</div>
+                            <div class="cars-meta">{{ car.get_car_models_display }} &bull; {{ car.daily_rent|floatformat:2 }} € / {% trans 'per days' %}  &bull; {{ car.owner }}</div>
                         </div>
                         <div class="cars-reference">
                             <div class="cars-location">{{ car.localization }}</div>

@@ -1,8 +1,5 @@
-import hashlib
-
-from django.shortcuts import render, get_object_or_404, redirect, render_to_response
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
-from django.template import loader, RequestContext
 from django.contrib import messages
 from django.views.generic.base import TemplateView
 from django.views.generic import FormView
@@ -10,9 +7,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.utils.translation import ugettext as _
-from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
-from rental.forms import ContactForm, PostCarForm, UserCreationForm, BookingCarForm
+from rental.forms import ContactForm, PostCarForm, BookingCarForm
 from rental.models import Car, Booking, Contact
 from rental.filters import CarFilter
 
@@ -74,38 +70,6 @@ def contact(request):
 class PricingView(TemplateView):
     template_name='rental/pricing.html'
 
-
-class RegistrationFormView(FormView):
-    form_class = UserCreationForm
-    template_name = 'registration/registration_form.html'
-
-    def form_valid(self, form):
-        user = User.objects.create_user(form.cleaned_data['username'],
-                                        form.cleaned_data['email'],
-                                        form.cleaned_data['password1'])
-        user.is_active = True
-        user.save()
-        date = user.date_joined.replace(microsecond=0)
-        key = hashlib.sha1((u'%s%s%s' % (settings.SECRET_KEY, user.email, date)
-                            ).encode('utf-8')).hexdigest()
-
-        subject = _(u'[%s] : Subscription') % settings.SITE_NAME
-
-        mail = render_to_string('authentication/mails/registration_confirmation.html',
-                                { 'titre': subject,
-                                  'pseudo': user.username,
-                                  'site': settings.SITE_NAME,
-                                  'user_id': user.id,
-                                  'user_key': key })
-
-        msg = EmailMessage(subject, mail, '%(site)s <%(email)s>' % {
-                'site': settings.SITE_NAME, 'email': settings.DEFAULT_FROM_EMAIL
-                }, [user.email])
-
-        msg.content_subtype = "html"
-        msg.send(fail_silently=True)
-
-        return redirect('rent_a_car')
 
 @login_required
 def post_car_detail(request):
