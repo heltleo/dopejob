@@ -18,7 +18,8 @@ ADMINS = (
 
 SEND_BROKEN_LINK_EMAILS=True
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = config('AWS_SMS_SMTP_SERVER_NAME')
 EMAIL_HOST_USER = config('AWS_SMS_SMTP_USERNAME')
