@@ -146,10 +146,20 @@ DEFAULT_FROM_EMAIL = 'no-repy@activcar.com'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Dango Allauth settings
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_REDIRECT_URL= "/"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT=None
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT=5
+ACCOUNT_PASSWORD_MIN_LENGTH = 8
 SOCIALACCOUNT_QUERY_EMAIL = True
