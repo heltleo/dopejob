@@ -90,3 +90,21 @@ def post_car_detail(request):
     context = {'form':form}
 
     return render(request, 'rental/forms/rent_car.html', context)
+
+@login_required
+def settings(request):
+
+    context = {
+        'selected': 'account'
+    }
+
+    return render(request, 'dashboard/account_settings.html', context)
+
+@login_required
+def settings_payment(request):
+
+    context = {
+        'selected': 'payment'
+    }
+
+    return render(request, 'dashboard/payment_settings.html', context)

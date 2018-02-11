@@ -18,17 +18,16 @@
     <div class="header">
         <div class="container">
             <ul class="header-menu-list">
-                <li class="header-menu-list-item logo"><a href="{% url 'cars' %}" class="brand">{% trans 'Activcar' %}</a></li>
+                <li class="header-menu-list-item logo"><a href="{% url 'cars' %}" class="brand">{% trans 'Activcar' %}<em>{% trans 'Rental' %}</em></a></li>
                 <li class="header-menu-list-item"><a href="{% url 'pricing' %}">{% trans 'Pricing' %}</a></li>
                 <li class="header-menu-list-item"><a href="/pages/about">{% trans 'About' %}</a></li>
                 <li class="header-menu-list-item"><a href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
                 {% if request.user.is_authenticated %}
-                <li class="header-menu-list-item menu-hover"><a href="#">{% trans 'Dashboard' %}</a>
+                <li class="header-menu-list-item menu-hover"><a href="#" title="{% trans 'Dashboard' %} - {{ user.username }}"><i class="icon ion-person"></i></a>
                     <ul class="submenu-list">
                         <li class="submenu-list-item"><a href="{% url 'post_a_car' %}">{% trans 'Add a vehicle' %}</a></li>
-                        <li class="submenu-list-item"><a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a></li>
-                        <li class="submenu-list-item"><a href="{% url 'account_email' %}">{% trans 'Change e-mail' %}</a></li>
-                        <li class="submenu-list-item"><a href="{% url 'account_logout' %}">{% trans 'Log out' %}</a></li>
+                        <li class="submenu-list-item"><a href="{% url 'dashboard' %}">{% trans 'Settings' %}</a></li>
+                        <li class="submenu-list-item"><a href="{% url 'account_logout' %}">{% trans 'Logout' %}</a></li>
                     <ul>
                 </li>
                 {% else %}
