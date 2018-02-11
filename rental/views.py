@@ -14,11 +14,13 @@ from rental.filters import CarFilter
 
 # Create your views here.
 def index(request):
-    latest_cars = Car.objects.order_by('-created')
+    latest_cars = Car.objects.all().filter(is_available=True)
+    number_of_cars = len(latest_cars)
     car_filter = CarFilter(request.GET, queryset=latest_cars)
 
     context = {
         'filter': car_filter,
+        'number_of_cars': number_of_cars,
         # 'latest_cars': latest_cars
     }
     return render(request, 'rental/index.html', context)

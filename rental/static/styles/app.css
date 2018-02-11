@@ -1,6 +1,7 @@
 * {box-sizing: border-box; margin: 0; padding: 0; list-style: none;}
 body {font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: normal; }
 .logo {font-weight: bold; font-size: 1.3em; color: black; text-transform: none; }
+strong { font-weight: bold; }
 a { text-decoration: none; color: #d5d5d5; }
 a:hover, .is-active a {color: black;}
 .container { max-width: 90%; margin: 0 auto; width: 100%; }
@@ -55,6 +56,7 @@ input:focus { outline: 0 none; }
 .fl-left { float: left; }
 .fl-right { float: right; }
 .header-title { border-bottom: 1px solid #eee; margin-bottom: 8px; padding-bottom: 5px; }
+.text-secondary { color: #d5d5d5; }
 @media screen and (max-width: 640px) {
     .container {max-width: 100%; padding-left: 15px; padding-right: 15px; }
     .column { float: none; display: block; }

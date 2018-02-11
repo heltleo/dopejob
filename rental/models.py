@@ -1,4 +1,5 @@
 import datetime
+import uuid
 from decimal import Decimal
 from django.db import models
 from django.contrib.auth.models import User
@@ -65,12 +66,13 @@ class Car(models.Model):
 
 class Booking(models.Model):
     customer = models.ForeignKey(User, related_name='cars', on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, related_name='cars_booked', on_delete=models.CASCADE, blank=True, null=True)
     booking_start_date = models.DateTimeField()
     booking_end_date = models.DateTimeField()
     is_approved = models.BooleanField()
 
     def __str__(self):
-        return 'Booking by {} on {}'.format(self.customer, self.booking_start_date)
+        return '{} Booking by {} on {} to {}'.format(self.car, self.customer, self.booking_start_date, self.booking_end_date)
 
 
 class Contact(models.Model):
@@ -99,3 +101,14 @@ class Contact(models.Model):
 
     class Meta:
         ordering = ('-timestamp',)
+
+
+class Account(models.Model):
+    uid = models.UUIDField(unique=True, editable=False, default=uuid.uuid4, verbose_name='Public identifier')
+    user = models.ForeignKey(User, related_name='account', on_delete=models.PROTECT)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    balance = models.PositiveIntegerField(verbose_name='Current balance', default=0)
+
+    def __str__(self):
+        return 'Customer {} have {} €'.format(self.user, self.balance)

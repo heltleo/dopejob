@@ -14,12 +14,14 @@
 {{ car.description }}
 {{ car.get_car_models_display }}
 {{ car.daily_rent|floatformat:2 }} € {% trans 'per days' %}
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated and car.is_available %}
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" class="button button-primary" value="{% trans 'Rent this car' %}" />
     </form>
+{% elif not car.is_available %}
+    <div>{% trans 'This car is already rented. Please come back later.' %}</div>
 {% else %}
     <em>{% trans 'You must be login to rent a car' %}</em>
 {% endif %}
