@@ -2,6 +2,7 @@ import datetime
 import uuid
 from decimal import Decimal
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
@@ -55,7 +56,8 @@ class Car(models.Model):
         return reverse('car-details', kwargs={'pk', self.pk})
 
     def was_published_recently(self):
-        return self.created >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.created <= now
 
     def is_upperclass(self):
         return self.model in (self.BERLINE, self.CABRIOLET)

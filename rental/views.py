@@ -18,9 +18,24 @@ def index(request):
     number_of_cars = len(latest_cars)
     car_filter = CarFilter(request.GET, queryset=latest_cars)
 
+
     context = {
         'filter': car_filter,
         'number_of_cars': number_of_cars,
+        'selected': 'newest',
+        # 'latest_cars': latest_cars
+    }
+    return render(request, 'rental/index.html', context)
+
+def sort_by_oldest(request):
+    oldest_cars = Car.objects.all().order_by('created').filter(is_available=True)
+    number_of_cars = len(oldest_cars)
+    car_filter = CarFilter(request.GET, queryset=oldest_cars)
+
+    context = {
+        'filter': car_filter,
+        'number_of_cars': number_of_cars,
+        'selected': 'oldest',
         # 'latest_cars': latest_cars
     }
     return render(request, 'rental/index.html', context)
