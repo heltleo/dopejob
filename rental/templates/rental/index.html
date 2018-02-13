@@ -30,7 +30,7 @@
             </div>
             <div>
                 <label for="sort_by">{% trans 'Sort by' %}:</label>
-                <select id="sort_by" name="sort_by" onchange="location = this.options[this.selectedIndex].value;">
+                <select id="sort_by" name="sort_by">
                     <option value="{% url 'cars' %}" {% if selected == 'newest'%}selected{% endif %}>Newest</option>
                     <option value="{% url 'sort_by_oldest' %}" {% if selected == 'oldest'%}selected{% endif %}>Oldest</option>
                 </select>
