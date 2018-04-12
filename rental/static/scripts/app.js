@@ -1,13 +1,13 @@
 'use strict';
 
 function buttonClickAndLoad () {
-    $('button').on('click', function() {
+    $('.btn-more').on('click', function() {
         $(this).addClass('onclic', 250, validate);
     });
     
     function validate () {
         setTimeout(function() {
-            $('button').removeClass('onclic');
+            $('.btn-more').removeClass('onclic');
         });
     }
 }
