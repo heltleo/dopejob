@@ -8,5 +8,10 @@ app for cars rental in django framework
 * django 2.0
 
 
+```bash
+pip install -r requirements-dev.txt
+```
+
+
 ## codeship continious integration
 [ ![Codeship Status for delitamakanda/activcar-app](https://app.codeship.com/projects/08018070-cbd8-0135-7f05-02fcee097afb/status?branch=master)](https://app.codeship.com/projects/261878)
