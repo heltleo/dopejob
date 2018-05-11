@@ -1,4 +1,7 @@
+import time
+
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.cache import cache
 from django.http import HttpResponse, Http404
 from django.contrib import messages
 from django.views.generic.base import TemplateView
@@ -13,8 +16,14 @@ from rental.models import Car, Booking, Contact
 from rental.filters import CarFilter
 
 # Create your views here.
+CAR_KEY = "latest_cars"
+
 def index(request):
-    latest_cars = Car.objects.all().filter(is_available=True)
+    latest_cars = cache.get(CAR_KEY)
+    if not latest_cars:
+        time.sleep(2)
+        latest_cars = Car.objects.all().filter(is_available=True)
+        cache.set(CAR_KEY, latest_cars)
     number_of_cars = len(latest_cars)
     car_filter = CarFilter(request.GET, queryset=latest_cars)
 
