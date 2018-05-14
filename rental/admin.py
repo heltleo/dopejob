@@ -27,6 +27,7 @@ class BookingAdmin(admin.ModelAdmin):
                 email_body = """Dear {}, Unfortunatly we do not have the capacity right now to accept your booking. Thanks""".format(booking.customer.username)
 
             print(email_body)
+            
             send_mail(
                 'Your Booking on Activcar',
                 email_body,
