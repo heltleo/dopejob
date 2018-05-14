@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.core.mail import send_mail
 from rental.models import Car
 from rental.models import Booking
 from rental.models import Contact
@@ -26,6 +27,13 @@ class BookingAdmin(admin.ModelAdmin):
                 email_body = """Dear {}, Unfortunatly we do not have the capacity right now to accept your booking. Thanks""".format(booking.customer.username)
 
             print(email_body)
+            send_mail(
+                'Your Booking on Activcar',
+                email_body,
+                'no-reply@activcar.com',
+                [booking.customer.email],
+                fail_silently=False,
+            )
 
         self.message_user(request, 'Emails were send successfully')
     email_customers.short_description = 'Send email about booking status to customers'
