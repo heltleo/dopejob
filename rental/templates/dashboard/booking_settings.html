@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Booking Settings' %}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="column col2">
+        {% include "dashboard/account_menu.html" %}
+    </div>
+    <div class="column col8">
+        <h3 class="header-title">{% trans 'Booking Settings' %}</h3>
+
+        <table>
+            <thead>
+                <th>Customer</th>
+                <th>Vehicle</th>
+                <th>Rent start</th>
+                <th>Rent end</th>
+                <th>Approved</th>
+            </thead>
+            <tbody>
+                {% for booking in customer_booking %}
+                <tr>
+                    <td>{{ booking.customer }}</td>
+                    <td><a href="{% url 'car-details' id=booking.car.id %}">{{ booking.car.name }}</a></td>
+                    <td>{{ booking.booking_start_date }}</td>
+                    <td>{{ booking.booking_end_date }}</td>
+                    {% if booking.is_approved %}
+                        <td>Yes</td>
+                    {% else %}
+                        <td>No</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}
