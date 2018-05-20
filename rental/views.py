@@ -38,6 +38,10 @@ def index(request):
 
 def sort_by_oldest(request):
     oldest_cars = Car.objects.all().order_by('created').filter(is_available=True)
+    if not oldest_cars:
+        time.sleep(2)
+        oldest_cars = Car.objects.all().order_by('created').filter(is_available=True)
+        cache.set(CAR_KEY, oldest_cars)
     number_of_cars = len(oldest_cars)
     car_filter = CarFilter(request.GET, queryset=oldest_cars)
 
@@ -60,7 +64,6 @@ def detail(request, id):
             booking.customer = request.user
             booking.car = car
             booking.is_approved = False
-            car.is_available = False
             booking.save()
             return redirect('car-details', id=car.id)
         else:
