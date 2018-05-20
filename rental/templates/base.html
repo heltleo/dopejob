@@ -11,6 +11,7 @@
     <title>activcar - {% block title %}{% endblock %}{% block head_title %}{% endblock %}</title>
     <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static "/admin/css/widgets.css" %}">
     <link href="{% static 'styles/app.css' %}" rel="stylesheet" />
   </head>
 
@@ -49,6 +50,15 @@
         </div>
     </div>
     <script type="text/javascript" src="{% static 'scripts/libs/jquery-3.3.1.min.js' %}"></script>
+    {% load i18n admin_modify %}
+    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+    <script type="text/javascript" src="{% static "/admin/js/jquery.init.js" %}"></script>
+    <script type="text/javascript" src="{% static "/admin/js/core.js" %}"></script>
+    <script type="text/javascript" src="{% static "/admin/js/SelectFilter2.js" %}"></script>
+    <script type="text/javascript" src="{% static "/admin/js/admin/RelatedObjectLookups.js" %}"></script>
+    <script type="text/javascript" src="{% static "/admin/js/actions.js" %}"></script>
+    <script type="text/javascript" src="{% static "/admin/js/calendar.js" %}"></script>
+    <script type="text/javascript" src="{% static "/admin/js/admin/DateTimeShortcuts.js" %}"></script>
     <script type="text/javascript" src="{% static 'scripts/app.js' %}"></script>
 </body>
 
