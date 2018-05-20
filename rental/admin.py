@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.core.mail import send_mail
+from django import forms
 from rental.models import Car
 from rental.models import Booking
 from rental.models import Contact
@@ -15,13 +16,21 @@ class CarAdmin(admin.ModelAdmin):
     class Meta:
         model = Car
 
-class ContactFormAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'topic', 'timestamp']
-    search_fields = ['name']
-    list_filter = ['topic']
+
+class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
+        fields = ('name', 'email', 'topic', 'message',)
+        widgets = {
+            'message': forms.Textarea(attrs={'disabled': True})
+        }
+
+class ContactFormAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'topic', 'timestamp']
+    search_fields = ['name', 'message']
+    list_filter = ['topic']
+    form = ContactForm
 
 
 class BookingAdmin(admin.ModelAdmin):

@@ -6,7 +6,7 @@ from .models import Booking
 from django.contrib.admin import widgets
 
 class ContactForm(forms.ModelForm):
-    message = forms.CharField(widget=forms.Textarea)
+    message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Please enter the message'}))
 
     class Meta:
         model = Contact
