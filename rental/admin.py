@@ -12,7 +12,7 @@ class ContactFormAdmin(admin.ModelAdmin):
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ['customer', 'booking_start_date', 'booking_end_date', 'is_approved']
+    list_display = ['customer', 'car', 'booking_start_date', 'booking_end_date', 'is_approved']
     list_filter = ['is_approved']
     search_fields = ['customer__username']
     list_editable = ['is_approved']
@@ -27,7 +27,7 @@ class BookingAdmin(admin.ModelAdmin):
                 email_body = """Dear {}, Unfortunatly we do not have the capacity right now to accept your booking. Thanks""".format(booking.customer.username)
 
             print(email_body)
-            
+
             send_mail(
                 'Your Booking on Activcar',
                 email_body,

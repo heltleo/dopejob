@@ -1,30 +1,49 @@
 from django import forms
-from django.forms import ModelForm
 from django.contrib.auth.models import User
-from .models import Contact, Car, Booking
+from .models import Contact
+from .models import Car
+from .models import Booking
+from django.contrib.admin import widgets
 
-
-class ContactForm(ModelForm):
+class ContactForm(forms.ModelForm):
     message = forms.CharField(widget=forms.Textarea)
 
     class Meta:
         model = Contact
-        fields = ('name', 'email', 'topic', 'message',)
+        fields = (
+            'name',
+            'email',
+            'topic',
+            'message',
+        )
 
 
-class PostCarForm(ModelForm):
+class PostCarForm(forms.ModelForm):
     image = forms.ImageField(required=False)
     description = forms.CharField(widget=forms.Textarea, help_text='Details of the vehicle.')
 
     class Meta:
         model = Car
-        fields = ('name', 'image', 'description', 'daily_rent', 'localization', 'car_models',)
+        fields = (
+            'name',
+            'image',
+            'description',
+            'daily_rent',
+            'localization',
+            'car_models',
+        )
 
 
-class BookingCarForm(ModelForm):
-    booking_start_date = forms.DateTimeField(required=True, help_text='debut rent')
-    booking_end_date = forms.DateTimeField(required=True, help_text='end rent')
+class BookingCarForm(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ('booking_start_date', 'booking_end_date',)
+        fields = (
+            'booking_start_date',
+            'booking_end_date',
+        )
+
+    def __init__(self, *args, **kwargs):
+        super(BookingCarForm, self).__init__(*args, **kwargs)
+        self.fields['booking_start_date'].widget = widgets.AdminDateWidget()
+        self.fields['booking_end_date'].widget = widgets.AdminDateWidget()

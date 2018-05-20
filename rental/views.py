@@ -58,12 +58,13 @@ def detail(request, id):
         if form.is_valid():
             booking = form.save(commit=False)
             booking.customer = request.user
+            booking.car = car
             booking.is_approved = False
             car.is_available = False
             booking.save()
             return redirect('car-details', id=car.id)
         else:
-            print(forms.errors)
+            print(form.errors)
     else:
         form = BookingCarForm(data=request.GET)
 
