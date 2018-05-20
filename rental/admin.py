@@ -6,7 +6,20 @@ from rental.models import Contact
 from rental.models import Account
 
 # Register your models here.
+class CarAdmin(admin.ModelAdmin):
+    list_display = ['name', 'daily_rent', 'is_available', 'owner', 'localization', 'created']
+    list_filter = ['is_available']
+    search_fields = ['localization', 'owner__username']
+    list_editable = ['is_available',]
+
+    class Meta:
+        model = Car
+
 class ContactFormAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'topic', 'timestamp']
+    search_fields = ['name']
+    list_filter = ['topic']
+
     class Meta:
         model = Contact
 
@@ -39,7 +52,7 @@ class BookingAdmin(admin.ModelAdmin):
         self.message_user(request, 'Emails were send successfully')
     email_customers.short_description = 'Send email about booking status to customers'
 
-admin.site.register(Car)
+admin.site.register(Car, CarAdmin)
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(Contact, ContactFormAdmin)
 admin.site.register(Account)
