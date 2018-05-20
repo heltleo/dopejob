@@ -11,8 +11,12 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.utils.translation import ugettext as _
 from django.core.mail import EmailMessage
-from rental.forms import ContactForm, PostCarForm, BookingCarForm
-from rental.models import Car, Booking, Contact
+from rental.forms import ContactForm
+from rental.forms import PostCarForm
+from rental.forms import BookingCarForm
+from rental.models import Car
+from rental.models import Booking
+from rental.models import Contact
 from rental.filters import CarFilter
 
 # Create your views here.
@@ -37,7 +41,7 @@ def index(request):
     return render(request, 'rental/index.html', context)
 
 def sort_by_oldest(request):
-    oldest_cars = Car.objects.all().order_by('created').filter(is_available=True)
+    oldest_cars = cache.get(CAR_KEY)
     if not oldest_cars:
         time.sleep(2)
         oldest_cars = Car.objects.all().order_by('created').filter(is_available=True)
@@ -138,3 +142,25 @@ def settings_payment(request):
     }
 
     return render(request, 'dashboard/payment_settings.html', context)
+
+@login_required
+def settings_car(request):
+    owner_car = Car.objects.all().order_by('-created').filter(owner=request.user)
+
+    context = {
+        'selected': 'car',
+        'owner_car' : owner_car
+    }
+
+    return render(request, 'dashboard/car_settings.html', context)
+
+@login_required
+def settings_booking(request):
+    customer_booking = Booking.objects.all().order_by('-booking_start_date').filter(car__owner=request.user)
+
+    context = {
+        'selected': 'booking',
+        'customer_booking': customer_booking
+    }
+
+    return render(request, 'dashboard/booking_settings.html', context)
