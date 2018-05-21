@@ -17,6 +17,7 @@ from rental.forms import BookingCarForm
 from rental.models import Car
 from rental.models import Booking
 from rental.models import Contact
+from rental.models import Account
 from rental.filters import CarFilter
 
 # Create your views here.
@@ -69,9 +70,15 @@ def detail(request, id):
             booking.car = car
             booking.is_approved = False
             booking.save()
+            messages.add_message(
+                request, messages.INFO, 'Your booking was requested. The owner of the car was warned. Thank you.'
+            )
             return redirect('car-details', id=car.id)
         else:
             print(form.errors)
+            messages.add_message(
+                request, messages.ERROR, 'An error was occured.'
+            )
     else:
         form = BookingCarForm(data=request.GET)
 
@@ -115,9 +122,15 @@ def post_car_detail(request):
             car = form.save(commit=False)
             car.owner = request.user
             car.save()
+            messages.add_message(
+                request, messages.SUCCESS, 'Your car is available to rental.'
+            )
             return redirect('cars')
         else:
             print(form.errors)
+            messages.add_message(
+                request, messages.ERROR, 'An error occured.'
+            )
     else:
         form = PostCarForm(data=request.GET)
 
@@ -136,9 +149,11 @@ def settings(request):
 
 @login_required
 def settings_payment(request):
+    account_user = Account.objects.all().filter(user=request.user)
 
     context = {
-        'selected': 'payment'
+        'selected': 'payment',
+        'account_user': account_user
     }
 
     return render(request, 'dashboard/payment_settings.html', context)

@@ -9,7 +9,13 @@
     </div>
     <div class="column col8">
         <h3 class="header-title">{% trans 'Payment Settings' %}</h3>
-        
+
+        {% for account in account_user %}
+            {{ account.balance }} €
+        {% empty %}
+            no balance
+        {% endfor %}
+
     </div>
 </div>
 
