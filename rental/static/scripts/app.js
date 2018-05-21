@@ -20,7 +20,20 @@ function changeViewBySelect () {
     });
 }
 
+function closeNotification () {
+    var $closeIcon = django.jQuery('.close-alert');
+    var $notificationAlert = django.jQuery('.alert-messages');
+
+    $closeIcon.each(function(){
+        django.jQuery(this).on('click', function() {
+            $notificationAlert.remove();
+        });
+    });
+
+}
+
 django.jQuery(function() {
     buttonClickAndLoad();
     changeViewBySelect();
+    closeNotification();
 });

@@ -59,7 +59,7 @@
             {% if messages %}
             <ul class="alert-container">
                 {% for message in messages %}
-                <li{% if message.tags %} class="alert-messages alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <li{% if message.tags %} class="alert-messages alert-{{ message.tags }}"{% endif %}>{{ message }}<span class="close-alert">x</span></li>
                 {% endfor %}
             </ul>
             {% endif %}
