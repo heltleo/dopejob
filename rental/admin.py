@@ -61,7 +61,15 @@ class BookingAdmin(admin.ModelAdmin):
         self.message_user(request, 'Emails were send successfully')
     email_customers.short_description = 'Send email about booking status to customers'
 
+
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ['uid', 'user', 'balance']
+    search_fields = ['user__username']
+
+    class Meta:
+        model = Account
+
 admin.site.register(Car, CarAdmin)
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(Contact, ContactFormAdmin)
-admin.site.register(Account)
+admin.site.register(Account, AccountAdmin)

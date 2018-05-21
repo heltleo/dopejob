@@ -105,6 +105,10 @@ class Contact(models.Model):
         ordering = ('-timestamp',)
 
 
+class Payment(models.Model):
+    pass
+
+
 class Account(models.Model):
     uid = models.UUIDField(unique=True, editable=False, default=uuid.uuid4, verbose_name='Public identifier')
     user = models.ForeignKey(User, related_name='account', on_delete=models.PROTECT)
