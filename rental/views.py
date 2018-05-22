@@ -22,6 +22,7 @@ from rental.filters import CarFilter
 
 # Create your views here.
 CAR_KEY = "latest_cars"
+OLD_CAR_KEY = "oldest_cars"
 
 def index(request):
     latest_cars = cache.get(CAR_KEY)
@@ -42,11 +43,11 @@ def index(request):
     return render(request, 'rental/index.html', context)
 
 def sort_by_oldest(request):
-    oldest_cars = cache.get(CAR_KEY)
+    oldest_cars = cache.get(OLD_CAR_KEY)
     if not oldest_cars:
         time.sleep(2)
         oldest_cars = Car.objects.all().order_by('created').filter(is_available=True)
-        cache.set(CAR_KEY, oldest_cars)
+        cache.set(OLD_CAR_KEY, oldest_cars)
     number_of_cars = len(oldest_cars)
     car_filter = CarFilter(request.GET, queryset=oldest_cars)
 
