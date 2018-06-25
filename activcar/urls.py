@@ -22,6 +22,7 @@ from django.views.i18n import JavaScriptCatalog
 
 urlpatterns = [
     path('', include('rental.urls')),
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^admin/', admin.site.urls),
