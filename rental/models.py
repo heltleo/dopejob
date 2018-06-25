@@ -105,8 +105,8 @@ class Contact(models.Model):
         ordering = ('-timestamp',)
 
 
-class Payment(models.Model):
-    pass
+# class Payment(models.Model):
+    # pass
 
 
 class Account(models.Model):
