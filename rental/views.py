@@ -27,7 +27,7 @@ OLD_CAR_KEY = "oldest_cars"
 def index(request):
     latest_cars = cache.get(CAR_KEY)
     if not latest_cars:
-        time.sleep(2)
+        # time.sleep(2)
         latest_cars = Car.objects.all().filter(is_available=True)
         cache.set(CAR_KEY, latest_cars)
     number_of_cars = len(latest_cars)
@@ -45,7 +45,7 @@ def index(request):
 def sort_by_oldest(request):
     oldest_cars = cache.get(OLD_CAR_KEY)
     if not oldest_cars:
-        time.sleep(2)
+        # time.sleep(2)
         oldest_cars = Car.objects.all().order_by('created').filter(is_available=True)
         cache.set(OLD_CAR_KEY, oldest_cars)
     number_of_cars = len(oldest_cars)

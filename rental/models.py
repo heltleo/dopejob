@@ -105,9 +105,6 @@ class Contact(models.Model):
         ordering = ('-timestamp',)
 
 
-# class Payment(models.Model):
-    # pass
-
 
 class Account(models.Model):
     uid = models.UUIDField(unique=True, editable=False, default=uuid.uuid4, verbose_name='Public identifier')
