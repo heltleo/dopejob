@@ -14,3 +14,5 @@ redis==2.10.6
 WeasyPrint==0.41
 django-paypal==0.5.0
 celery==4.2.0
+libmemcached-dev 
+zlib1g-dev
