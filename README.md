@@ -1,4 +1,4 @@
-# activcar app [![Build Status](https://travis-ci.org/delitamakanda/activcar.svg?branch=master)](https://travis-ci.org/delitamakanda/activcar)
+# activcar app [![CircleCI](https://circleci.com/gh/delitamakanda/activcar/tree/master.svg?style=svg)](https://circleci.com/gh/delitamakanda/activcar/tree/master)
 app for cars rental in django framework
 
 ![Alt text](https://cdn.dribbble.com/users/272011/screenshots/2289607/dribbble_13oct.png)
