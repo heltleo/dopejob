@@ -9,9 +9,6 @@ dj-pagination==2.3.2
 python-decouple==3.1
 django-storages==1.6.5
 django-allauth==0.35.0
-libmemcached
-libmemcached-devel
-pylibmc==1.2.3
 redis==2.10.6
 WeasyPrint==0.41
 django-paypal==0.5.0
