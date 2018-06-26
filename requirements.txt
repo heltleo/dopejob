@@ -13,7 +13,6 @@ django-storages==1.6.5
 boto3
 django-allauth==0.35.0
 pylibmc
-libmemcached-dev
 redis==2.10.6
 WeasyPrint==0.41
 django-paypal==0.5.0
