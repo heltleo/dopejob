@@ -18,6 +18,10 @@ from rental.models import Car
 from rental.models import Booking
 from rental.models import Contact
 from rental.filters import CarFilter
+from django.utils import timezone
+from django.views.decorators.http import require_POST
+from rental.models import Coupon
+from rental.forms import CouponApplyForm
 
 # Create your views here.
 CAR_KEY = "latest_cars"
@@ -61,6 +65,7 @@ def sort_by_oldest(request):
 def detail(request, id):
     car = get_object_or_404(Car, pk=id)
     form = BookingCarForm()
+    coupon_apply_form = CouponApplyForm()
 
     if request.method == 'POST':
         form = BookingCarForm(request.POST)
@@ -69,6 +74,7 @@ def detail(request, id):
             booking.customer = request.user
             booking.car = car
             booking.is_approved = False
+            booking.car.is_available = False
             booking.save()
             messages.add_message(
                 request, messages.INFO, 'Your booking was requested. The owner of the car was warned. Thank you.'
@@ -89,7 +95,8 @@ def detail(request, id):
 
     context = {
         'car': car,
-        'form': form
+        'form': form,
+        'coupon_apply_form': coupon_apply_form
     }
     return render(request, 'rental/detail.html', context)
 
@@ -168,3 +175,17 @@ def settings_booking(request):
     }
 
     return render(request, 'dashboard/booking_settings.html', context)
+
+
+@require_POST
+def coupon_apply(request):
+    now = timezone.now()
+    form = CouponApplyForm(request.POST)
+    if form.is_valid():
+        code = form.cleaned_data['code']
+        try:
+            coupon = Coupon.objects.get(code__iexact=code, valid_from__lte=now, valid_to__gte=now,active=True)
+            request.session['coupon_id'] = coupon.id
+        except Coupon.DoesNotExist:
+            request.session['coupon_id'] = None
+    return redirect('car-details')

@@ -49,3 +49,7 @@ class BookingCarForm(forms.ModelForm):
         super(BookingCarForm, self).__init__(*args, **kwargs)
         self.fields['booking_start_date'].widget.attrs['class'] = 'datepicker'
         self.fields['booking_end_date'].widget.attrs['class'] = 'datepicker'
+
+
+class CouponApplyForm(forms.Form):
+    code = forms.CharField()

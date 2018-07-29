@@ -4,6 +4,7 @@ from django import forms
 from rental.models import Car
 from rental.models import Booking
 from rental.models import Contact
+from rental.models import Coupon
 
 # Register your models here.
 class CarAdmin(admin.ModelAdmin):
@@ -61,6 +62,14 @@ class BookingAdmin(admin.ModelAdmin):
     email_customers.short_description = 'Send email about booking status to customers'
 
 
+class CouponAdmin(admin.ModelAdmin):
+    list_display = ['code', 'valid_from', 'valid_to', 'discount', 'active']
+    list_filter = ['active', 'valid_from', 'valid_to']
+    search_fields = ['code']
+
+
+
 admin.site.register(Car, CarAdmin)
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(Contact, ContactFormAdmin)
+admin.site.register(Coupon, CouponAdmin)

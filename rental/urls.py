@@ -11,4 +11,5 @@ urlpatterns = [
     path('settings/car', views.settings_car, name='dashboard_car'),
     path('settings/booking', views.settings_booking, name='dashboard_booking'),
     path('oldest', views.sort_by_oldest, name='sort_by_oldest'),
+    path('apply', views.coupon_apply, name='apply'),
 ]
