@@ -1,39 +1,68 @@
 'use strict';
 
 function buttonClickAndLoad () {
-    django.jQuery('.btn-more').on('click', function() {
-        django.jQuery(this).addClass('onclic', 250, validate);
+    $('.btn-more').on('click', function() {
+        $(this).addClass('onclic', 250, validate);
     });
 
     function validate () {
         setTimeout(function() {
-            django.jQuery('.btn-more').removeClass('onclic');
+            $('.btn-more').removeClass('onclic');
         });
     }
-}
+};
 
 function changeViewBySelect () {
-    var page = django.jQuery('#sort_by').val();
+    var page = $('#sort_by').val();
 
-    django.jQuery('#sort_by').on('change', function() {
+    $('#sort_by').on('change', function() {
         window.location = this.options[this.selectedIndex].value;
     });
-}
+};
 
 function closeNotification () {
-    var $closeIcon = django.jQuery('.close-alert');
-    var $notificationAlert = django.jQuery('.alert-messages');
+    var $closeIcon = $('.close-alert');
+    var $notificationAlert = $('.alert-messages');
 
     $closeIcon.each(function(){
-        django.jQuery(this).on('click', function() {
+        $(this).on('click', function() {
             $notificationAlert.remove();
         });
     });
 
-}
+};
 
-django.jQuery(function() {
+function prepareDatePicker() {
+    $('.datepicker').each(function(index, element) {
+        var $element = $(element);
+
+        var options = {
+            type: Date,
+            format: 'yyyy-mm-dd',
+            numberOfMonths: 2,
+            showButtonPanel: true,
+            weekStart: 1,
+            startView: 0,
+            minDate: '+1d',
+            changeMonth: true,
+            changeYear: true,
+            onSelect: function(date){
+                var dates = date.split('/');
+                var lastDate = new Date(dates[2], dates[0], 0);
+                var y = lastDate.getFullYear(), m = lastDate.getMonth(), d = lastDate.getDate();
+                m = ('0'+ (m+1)).slice(-2);
+
+                $("[name='booking_end_date']").val(y+'-'+m+'-'+d);
+            }
+        }
+        $element.datepicker(options);
+    });
+};
+
+$(function() {
     buttonClickAndLoad();
     changeViewBySelect();
     closeNotification();
+    prepareDatePicker();
+    console.log('starting app...')
 });

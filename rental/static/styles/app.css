@@ -71,6 +71,16 @@ input:focus, textarea:focus { outline: 0 none; }
 .signin-page form input#id_remember { float: left; margin-top: 10px; margin-right: 5px; s}
 .signin-page form label[for="id_remember"] { display: inline-block; }
 .header-menu-list-sm { display: none; }
+.fancybox-slide--iframe .fancybox-content {width  : 800px;height : 600px;max-width  : 80%;max-height : 80%;margin: 0;}
+.switches-checkbox { display: none; }
+.switches-label i { height: 28px;width: 28px;background: #ffffff; display: inline-block;border-radius: 100px;margin-top: 2px;margin-left: 2px; transition: all 0.2s ease-in-out;-webkit-transition: all 0.2s ease-in-out;pointer-events: none;box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0); }
+.switches-label { display: block; width: 54px;height: 32px;margin: 0px auto;border-radius: 100px;transition: all 0.2s ease-in-out;-webkit-transition: all 0.2s ease-in-out;background-color: #E6E9EC; }
+.switches-label:hover > i { box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.20); transform: scale(1.01);  }
+.switches-checkbox:checked + .switches-label > i { margin-left: 24px;}
+.switches-label:active { background-color: #A6B9CB; }
+.switches-label:active>i {width: 34px;box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.20);}
+.switches-checkbox:checked+.switches-label:active>i {margin-left: 18px;}
+.switches-checkbox:checked+.switches-label {background-color: #aa8cc5;}
 @-webkit-keyframes rotating {from {-webkit-transform: rotate(0deg);transform: rotate(0deg);}to {-webkit-transform: rotate(360deg);transform: rotate(360deg);}}
 @media screen and (max-width: 640px) {
     .container {max-width: 100%; padding-left: 15px; padding-right: 15px; }
