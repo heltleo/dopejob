@@ -17,6 +17,7 @@
                 <th>Rent start</th>
                 <th>Rent end</th>
                 <th>Approved</th>
+                <th></th>
             </thead>
             <tbody>
                 {% for booking in customer_booking %}
@@ -26,10 +27,17 @@
                     <td>{{ booking.booking_start_date }}</td>
                     <td>{{ booking.booking_end_date }}</td>
                     {% if booking.is_approved %}
-                        <td>Yes</td>
+                        <td>
+                            <input class="switches-checkbox" type="checkbox" id="toggle-{{ booking.id }}" checked>
+                            <label class="switches-label" for="toggle-{{ booking.id }}"><i></i></label>
+                        </td>
                     {% else %}
-                        <td>No</td>
+                        <td>
+                            <input class="switches-checkbox" type="checkbox" id="toggle-{{ booking.id }}">
+                            <label class="switches-label" for="toggle-{{ booking.id }}"><i></i></label>
+                        </td>
                     {% endif %}
+                    <td><a href="#"><i class="icon ion-trash-b"></i></a></td>
                 </tr>
                 {% endfor %}
             </tbody>

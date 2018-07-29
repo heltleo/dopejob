@@ -18,6 +18,8 @@
                     <th>{% trans 'Localization' %}</th>
                     <th>{% trans 'Model' %}</th>
                     <th>{% trans 'Availability' %}</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,10 +30,18 @@
                     <td>{{ user.localization }}</td>
                     <td>{{ user.get_car_models_display }}</td>
                     {% if user.is_available %}
-                        <td> Yes </td>
+                        <td>
+                            <input class="switches-checkbox" type="checkbox" id="toggle-{{ user.id }}" checked>
+                            <label class="switches-label" for="toggle-{{ user.id }}"><i></i></label>
+                        </td>
                     {% else %}
-                        <td> No </td>
+                        <td>
+                            <input class="switches-checkbox" type="checkbox" id="toggle-{{ user.id }}">
+                            <label class="switches-label" for="toggle-{{ user.id }}"><i></i></label>
+                        </td>
                     {% endif %}
+                    <td><a href="#"><i class="icon ion-edit"></i></a></td>
+                    <td><a href="#"><i class="icon ion-trash-b"></i></a></td>
                 </tr>
                 {% endfor %}
             </tbody>
