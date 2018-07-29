@@ -47,5 +47,5 @@ class BookingCarForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(BookingCarForm, self).__init__(*args, **kwargs)
-        self.fields['booking_start_date'].widget = widgets.AdminDateWidget()
-        self.fields['booking_end_date'].widget = widgets.AdminDateWidget()
+        self.fields['booking_start_date'].widget.attrs['class'] = 'datepicker'
+        self.fields['booking_end_date'].widget.attrs['class'] = 'datepicker'

@@ -4,7 +4,6 @@ from django import forms
 from rental.models import Car
 from rental.models import Booking
 from rental.models import Contact
-from rental.models import Account
 
 # Register your models here.
 class CarAdmin(admin.ModelAdmin):
@@ -62,14 +61,6 @@ class BookingAdmin(admin.ModelAdmin):
     email_customers.short_description = 'Send email about booking status to customers'
 
 
-class AccountAdmin(admin.ModelAdmin):
-    list_display = ['uid', 'user', 'balance']
-    search_fields = ['user__username']
-
-    class Meta:
-        model = Account
-
 admin.site.register(Car, CarAdmin)
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(Contact, ContactFormAdmin)
-admin.site.register(Account, AccountAdmin)

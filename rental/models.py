@@ -103,15 +103,3 @@ class Contact(models.Model):
 
     class Meta:
         ordering = ('-timestamp',)
-
-
-
-class Account(models.Model):
-    uid = models.UUIDField(unique=True, editable=False, default=uuid.uuid4, verbose_name='Public identifier')
-    user = models.ForeignKey(User, related_name='account', on_delete=models.PROTECT)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    balance = models.PositiveIntegerField(verbose_name='Current balance', default=0)
-
-    def __str__(self):
-        return 'Customer {} have {} €'.format(self.user, self.balance)

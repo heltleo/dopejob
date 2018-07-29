@@ -17,7 +17,6 @@ from rental.forms import BookingCarForm
 from rental.models import Car
 from rental.models import Booking
 from rental.models import Contact
-from rental.models import Account
 from rental.filters import CarFilter
 
 # Create your views here.
@@ -147,17 +146,6 @@ def settings(request):
     }
 
     return render(request, 'dashboard/account_settings.html', context)
-
-@login_required
-def settings_payment(request):
-    account_user = Account.objects.all().filter(user=request.user)
-
-    context = {
-        'selected': 'payment',
-        'account_user': account_user
-    }
-
-    return render(request, 'dashboard/payment_settings.html', context)
 
 @login_required
 def settings_car(request):
