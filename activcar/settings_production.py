@@ -53,7 +53,7 @@ DEFAULT_FILE_STORAGE = 'activcar.storage_backends.MediaStorage'
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
-        'TIMEOUT': None,
+        'TIMEOUT': 60 * 15,
         'LOCATION': config('MEMCACHIER_SERVERS'),
         'OPTIONS': {
             'binary': True,
