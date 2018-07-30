@@ -92,6 +92,6 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_BEAT_SCHEDULE = {
     'debug': {
         'task': 'rental.tasks.debug',
-        'schedule': crontab('0 1 1 ? * *')  # execute every day at 10am
+        'schedule': crontab(hour=7, minute=30, day_of_week=1)  # Executes every Monday morning at 7:30 a.m.
     }
 }
