@@ -1,4 +1,5 @@
 from activcar.settings import *
+from celery.schedules import crontab
 
 import dj_database_url
 
@@ -86,3 +87,11 @@ CELERY_RESULT_BACKEND = config('REDISTOGO_URL')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+
+CELERY_BEAT_SCHEDULE = {
+    'debug': {
+        'task': 'rental.tasks.debug',
+        'schedule': crontab('0 1 1 ? * *')  # execute every day at 10am
+    }
+}
