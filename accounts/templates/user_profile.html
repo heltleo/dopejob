@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Créer un compte' %}{% endblock %}
+{% block bodyId %}userProfilePage{% endblock %}
+
+{% block content %}
+<div class="panel signin-page">
+
+    <div class="formset">
+        <form>
+            <label for="profileType">{% trans 'Vous êtes' %}:</label>
+            <select id="profileType">
+                <option {% if studentForm.is_bound %}selected="selected"{% endif %} value="student">{% trans 'Etudiant' %}</option>
+                <option {% if employeeForm.is_bound %}selected="selected"{% endif %} value="employee">{% trans 'Employé' %}</option>
+            </select>
+        </form>
+        <form action="{% url 'register' %}" method="get" id="studentForm">
+            {% csrf_token %}
+            {{ studentForm.as_p }}
+
+            <input type="hidden" name="profileType" value="student" />
+            <a class="link" href="{% url 'login' %}">{% trans "Se connecter" %}</a>
+            <button class="button button-primary" type="submit">{% trans "Créer un compte" %}</button>
+        </form>
+        <form action="{% url 'register' %}" method="get" id="employeeForm">
+            {% csrf_token %}
+            {{ employeeForm.as_p }}
+            
+            <input type="hidden" name="profileType" value="employee" />
+            <a class="link" href="{% url 'login' %}">{% trans "Se connecter" %}</a>
+            <button class="button button-primary" type="submit">{% trans "Créer un compte" %}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
