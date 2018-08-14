@@ -1,10 +1,23 @@
 from django.shortcuts import render, redirect
+from accounts.models import User
 from accounts.forms import StudentProfileForm
 from accounts.forms import EmployeeProfileForm
+from accounts.forms import LoginForm
 
 # Create your views here.
 def login(request):
-    pass
+    if len(request.POST) > 0:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user_mail = form.cleaned_data['email']
+            logged_user = User.objects.get(email=user_mail)
+            request.session['logged_user_id'] = logged_user.id
+            return redirect('/')
+        else:
+            return render(request, 'login.html', {'form': form})
+    else:
+        form = LoginForm()
+        return render(request, 'login.html', {'form': form})
 
 def logout(request):
     pass

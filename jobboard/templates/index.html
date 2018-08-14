@@ -3,9 +3,12 @@
 {% load staticfiles %}
 {% load pagination_tags %}
 {% block title %}{% trans 'Bienvenue' %}{% endblock %}
+{% block bodyId %}welcomePage{% endblock %}
 
 {% block content %}
-{{ logged_user_name }}
+{% if logged_user %}
+    {{ logged_user.first_name }} {{ logged_user.last_name }}
+{% endif %}
 {% endblock %}
 
 {#% block content %#}

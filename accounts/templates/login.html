@@ -11,8 +11,8 @@
             {% csrf_token %}
             {{ form.as_p }}
 
-            <a class="link" href="">{% trans "Mot de passe oublié ?" %}</a>
             <button class="button button-primary" type="submit">{% trans "Connexion" %}</button>
+            <a class="link" href="{% url 'register' %}">{% trans "Créer un compte" %}</a>
         </form>
 
     </div>

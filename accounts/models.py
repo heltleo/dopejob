@@ -12,6 +12,7 @@ class User(models.Model):
     password = models.CharField(max_length=32)
     friends = models.ManyToManyField('self')
     faculty = models.ForeignKey('Faculty', on_delete=models.CASCADE)
+    user_type = 'generic'
 
     def __str__(self):
         return 'User {} {}'.format(self.last_name, self.first_name)
@@ -62,6 +63,7 @@ class Employee(User):
     office = models.CharField(max_length=30)
     campus = models.ForeignKey('Campus', on_delete=models.CASCADE)
     job = models.ForeignKey('Job', on_delete=models.CASCADE)
+    user_type = 'employee'
 
     def __str__(self):
         return 'Job {}'.format(self.job.title)
@@ -70,6 +72,7 @@ class Employee(User):
 class Student(User):
     campus = models.ForeignKey('Campus', on_delete=models.CASCADE)
     year = models.IntegerField()
+    user_type = 'student'
 
     def __str__(self):
         return 'Job {}'.format(self.campus.name)

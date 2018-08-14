@@ -19,16 +19,16 @@
             {{ studentForm.as_p }}
 
             <input type="hidden" name="profileType" value="student" />
-            <a class="link" href="{% url 'login' %}">{% trans "Se connecter" %}</a>
             <button class="button button-primary" type="submit">{% trans "Créer un compte" %}</button>
+            <a class="link" href="{% url 'login' %}">{% trans "Se connecter" %}</a>
         </form>
         <form action="{% url 'register' %}" method="get" id="employeeForm">
             {% csrf_token %}
             {{ employeeForm.as_p }}
-            
+
             <input type="hidden" name="profileType" value="employee" />
-            <a class="link" href="{% url 'login' %}">{% trans "Se connecter" %}</a>
             <button class="button button-primary" type="submit">{% trans "Créer un compte" %}</button>
+            <a class="link" href="{% url 'login' %}">{% trans "Se connecter" %}</a>
         </form>
     </div>
 </div>
