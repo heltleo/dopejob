@@ -16,10 +16,10 @@
 <body>
     <div class="header">
         <div class="container">
-
+            {% block headerContent %}{% endblock %}
         </div>
     </div>
-    <div class="body">
+    <div id="{% block bodyId %}genericPage{% endblock %}" class="body">
         <div class="container">
             {% if messages %}
             <ul class="alert-container">
@@ -31,6 +31,12 @@
             {% block content %}{% endblock %}
         </div>
     </div>
+    <div class="footer">
+        <div class="container">
+            &copy; 2018 - dopejob
+        </div>
+    </div>
+
     <script type="text/javascript" src="{% static 'vendors/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'vendors/jquery.cookie.js' %}"></script>
     <script type="text/javascript" src="{% static 'scripts/app.js' %}"></script>

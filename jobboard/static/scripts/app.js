@@ -9,9 +9,24 @@ function closeNotification () {
             $notificationAlert.remove();
         });
     });
+};
 
+function displayUserAccountForm() {
+    var profileTypeVal = $('#profileType').val();
+    var $employeeForm = $('#employeeForm');
+    var $studentForm = $('#studentForm');
+
+    if ( profileTypeVal == 'student') {
+        $employeeForm.hide();
+        $studentForm.show();
+    } else {
+        $employeeForm.show();
+        $studentForm.hide();
+    }
 };
 
 $(function() {
     closeNotification();
+    displayUserAccountForm();
+    $("#profileType").change(displayUserAccountForm);
 });

@@ -5,8 +5,6 @@ strong { font-weight: bold; }
 a { text-decoration: none; color: #d5d5d5; }
 a:hover, .is-active a {color: black;}
 .container { max-width: 90%; margin: 0 auto; width: 100%; }
-.brand { color: black; }
-.brand:hover { color: black; }
 .header {padding: 8px 0; border-bottom: 1px solid #e5e5e5; box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2); position: fixed; width: 100%; display: inline-block; background-color: white; }
 .header-menu-list-md { display: flex; position: relative; justify-content: space-between; }
 .header-menu-list-md .header-menu-list-item.logo { justify-content:flex-start; flex-grow: 5; }
@@ -58,20 +56,7 @@ input:focus, textarea:focus { outline: 0 none; }
 .fl-right { float: right; }
 .header-title { border-bottom: 1px solid #eee; margin-bottom: 8px; padding-bottom: 5px; }
 .text-secondary { color: #d5d5d5; }
-.onclic {width: 10px !important;height: 70px !important;border-radius: 50% !important;border-color: #bbbbbb;border-width: 4px;font-size: 0;border-left-color: #008CBA;-webkit-animation: rotating 2s 0.25s linear infinite;animation: rotating 2s 0.25s linear infinite;}
-.onclic:hover {color: dodgerblue;background: white;}
-.contact-page {max-width: 420px; width: 100%; margin-top: 40px; margin-left: auto; margin-bottom: 0; }
-.contact-page form label { display: none; }
-.contact-page form input, .contact-page form select { margin-top: 10px; margin-bottom: 10px; }
-.signin-page { max-width: 300px; background-color: rgba(255,255,255, 0.54); position: absolute; top: 50%; left: 50%; margin-left: -150px; margin-top: -150px; padding: 10px 10px;  border-radius: 4px; box-shadow: 0 1px 10px rgba(0,0,0,0.20); }
-.signin-page .header-title { text-align: center; border-bottom: 0px none; }
-.signin-page a { color: #aa8cc5; }
-.signin-page a:hover, .signin-page a:focus { border-color: #aa8cc5; border-bottom-style: dashed; border-bottom-width: 1px; }
-.signin-page form label{ margin-top: 5px; margin-bottom: 5px; }
-.signin-page form input#id_remember { float: left; margin-top: 10px; margin-right: 5px; s}
-.signin-page form label[for="id_remember"] { display: inline-block; }
 .header-menu-list-sm { display: none; }
-.fancybox-slide--iframe .fancybox-content {width  : 800px;height : 600px;max-width  : 80%;max-height : 80%;margin: 0;}
 .switches-checkbox { display: none; }
 .switches-label i { height: 28px;width: 28px;background: #ffffff; display: inline-block;border-radius: 100px;margin-top: 2px;margin-left: 2px; transition: all 0.2s ease-in-out;-webkit-transition: all 0.2s ease-in-out;pointer-events: none;box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0); }
 .switches-label { display: block; width: 54px;height: 32px;margin: 0px auto;border-radius: 100px;transition: all 0.2s ease-in-out;-webkit-transition: all 0.2s ease-in-out;background-color: #E6E9EC; }
