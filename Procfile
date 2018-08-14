@@ -1,2 +1,2 @@
-web: gunicorn activcar.wsgi:application --preload
-worker: celery -A activcar worker beat -l info --without-mingle --without-heartbeat
+web: gunicorn project.wsgi:application --preload
+worker: celery -A project worker beat -l info --without-mingle --without-heartbeat

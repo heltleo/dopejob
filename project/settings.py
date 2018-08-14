@@ -28,13 +28,12 @@ DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 
-SITE_NAME = 'activcar'
+SITE_NAME = 'dopejob'
 SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = [
-    'rental',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,14 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django.contrib.flatpages',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'paypal.standard.ipn',
-    # 'allauth.socialaccount.providers.facebook',
     'dj_pagination',
     'storages',
+    'accounts',
+    'jobboard',
 ]
 
 MIDDLEWARE = [
@@ -60,11 +55,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'dj_pagination.middleware.PaginationMiddleware',
 ]
 
-ROOT_URLCONF = 'activcar.urls'
+ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
     {
@@ -82,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'activcar.wsgi.application'
+WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Database
@@ -152,7 +146,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 
-DEFAULT_FROM_EMAIL = 'no-reply@activcar.com'
+DEFAULT_FROM_EMAIL = 'no-reply@dopejob.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -161,35 +155,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
 )
-
-LOGIN_REDIRECT_URL = "/"
-ACCOUNT_LOGOUT_REDIRECT_URL= "/"
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT=5
-ACCOUNT_PASSWORD_MIN_LENGTH = 8
-SOCIALACCOUNT_QUERY_EMAIL = True
-
-
-# Cache
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    }
-}
-
-# Payment gateway
-PAYPAL_RECEIVER_EMAIL = config('PAYPAL_RECEIVER_EMAIL')
-PAYPAL_TEST = config('PAYPAL_TEST')
-
-# REDIS
-REDIS_HOST = config('REDIS_HOST')
-REDIS_PORT = config('REDIS_PORT')
-REDIS_DB = config('REDIS_DB')
-REDISTOGO_URL = config('REDISTOGO_URL')

@@ -20,10 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('rental.urls')),
-    url(r'^paypal/', include('paypal.standard.ipn.urls')),
-    url(r'^accounts/', include('allauth.urls')),
-    url(r'^pages/', include('django.contrib.flatpages.urls')),
+    path('', include('jobboard.urls')),
+    path('accounts/', include('accounts.urls')),
     url(r'^admin/', admin.site.urls),
 ]
 if settings.DEBUG:
