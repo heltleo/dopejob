@@ -15,12 +15,19 @@ function displayUserAccountForm() {
     var profileTypeVal = $('#profileType').val();
     var $employeeForm = $('#employeeForm');
     var $studentForm = $('#studentForm');
+    var $enterpriseForm = $('#enterpriseForm');
 
     if ( profileTypeVal == 'student') {
         $employeeForm.hide();
         $studentForm.show();
-    } else {
+        $enterpriseForm.hide();
+    } else if (profileTypeVal == 'employee') {
         $employeeForm.show();
+        $studentForm.hide();
+        $enterpriseForm.hide();
+    } else {
+        $enterpriseForm.show();
+        $employeeForm.hide();
         $studentForm.hide();
     }
 };

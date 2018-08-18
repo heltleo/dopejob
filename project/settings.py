@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'storages',
     'accounts',
     'jobboard',
+    'rental',
 ]
 
 MIDDLEWARE = [
@@ -113,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 from django.utils.translation import gettext_lazy as _
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
@@ -125,7 +126,7 @@ USE_TZ = True
 
 LANGUAGES = (
     ('en', _('English')),
-    ('fr', _('French')),
+    ('fr', _('Français')),
 )
 
 LOCALE_PATHS = (
@@ -156,3 +157,5 @@ AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 )
+
+AUTH_USER_MODEL = 'accounts.User'
