@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'storages',
     'accounts',
     'jobboard',
-    'rental',
 ]
 
 MIDDLEWARE = [

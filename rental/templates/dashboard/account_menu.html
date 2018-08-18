@@ -1,7 +1,0 @@
-{% load i18n %}
-<h3 class="header-title">{% trans 'Settings' %}</h3>
-<ul>
-    <li {% if selected == "car" %} class="is-active" {% endif %}><a href="{% url 'dashboard_car' %}">{% trans 'My Car' %}</a></li>
-    <li {% if selected == "booking" %} class="is-active" {% endif %}><a href="{% url 'dashboard_booking' %}">{% trans 'My Bookings' %}</a></li>
-    <li {% if selected == "account" %} class="is-active" {% endif %}><a href="{% url 'dashboard' %}">{% trans 'Account' %}</a></li>
-</ul>
