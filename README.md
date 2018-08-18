@@ -15,3 +15,5 @@ pip install -r requirements-dev.txt
 
 ## Resources useful
 - [AWS EB](https://stackoverflow.com/questions/41161691/how-to-run-a-celery-worker-with-django-app-scalable-by-aws-elastic-beanstalk)
+- [Django Girls] (https://tutorial.djangogirls.org/fr/)
+- [Django Girls: extensions] (https://tutorial-extensions.djangogirls.org/en/)
