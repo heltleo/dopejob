@@ -5,20 +5,6 @@ from .models import Car
 from .models import Booking
 from django.contrib.admin import widgets
 
-class ContactForm(forms.ModelForm):
-    message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Please enter the message'}))
-    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name, First Name'}))
-    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
-
-    class Meta:
-        model = Contact
-        fields = (
-            'name',
-            'email',
-            'topic',
-            'message',
-        )
-
 
 class PostCarForm(forms.ModelForm):
     image = forms.ImageField(required=False)
