@@ -12,6 +12,7 @@
             <select id="profileType">
                 <option {% if studentForm.is_bound %}selected="selected"{% endif %} value="student">{% trans 'Etudiant' %}</option>
                 <option {% if employeeForm.is_bound %}selected="selected"{% endif %} value="employee">{% trans 'Employé' %}</option>
+                <option {% if employeeForm.is_bound %}selected="selected"{% endif %} value="enterprise">{% trans 'Entreprise' %}</option>
             </select>
         </form>
         <form action="{% url 'register' %}" method="get" id="studentForm">
@@ -27,6 +28,14 @@
             {{ employeeForm.as_p }}
 
             <input type="hidden" name="profileType" value="employee" />
+            <button class="button button-primary" type="submit">{% trans "Créer un compte" %}</button>
+            <a class="link" href="{% url 'login' %}">{% trans "Se connecter" %}</a>
+        </form>
+        <form action="{% url 'register' %}" method="get" id="enterpriseForm">
+            {% csrf_token %}
+            {{ enterpriseForm.as_p }}
+
+            <input type="hidden" name="profileType" value="enterprise" />
             <button class="button button-primary" type="submit">{% trans "Créer un compte" %}</button>
             <a class="link" href="{% url 'login' %}">{% trans "Se connecter" %}</a>
         </form>
