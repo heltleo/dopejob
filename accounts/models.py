@@ -102,7 +102,7 @@ class Message(models.Model):
     DISLIKE = 'DI'
     LIKE = 'LI'
     TOPIC_CHOICES = (
-        (GENERAL,'General informations'),
+        (GENERAL,'General'),
         (GREETING, 'Greeting'),
         (DISLIKE, 'Dislike'),
         (LIKE, 'Like'),
@@ -114,7 +114,7 @@ class Message(models.Model):
     )
     author = models.ForeignKey('User', on_delete=models.CASCADE)
     content = models.TextField()
-    publication_date = models.DateField()
+    publication_date = models.DateField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'Message'
@@ -192,6 +192,7 @@ class Enterprise(User):
     logo = models.ImageField(upload_to='enterprise_image/%Y/%m/%d/', blank=True)
     office = models.CharField(max_length=30)
     address = models.TextField()
+    description = models.CharField(max_length=300, blank=True)
     user_type = 'enterprise'
 
     @property
