@@ -20,7 +20,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/login')
+    return redirect('/accounts/login')
 
 def register_view(request):
     if len(request.GET) > 0 and 'profileType' in request.GET:
