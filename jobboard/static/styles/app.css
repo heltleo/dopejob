@@ -5,13 +5,14 @@ strong { font-weight: bold; }
 a { text-decoration: none; color: #d5d5d5; }
 a:hover, .is-active a {color: black;}
 .container { max-width: 90%; margin: 0 auto; width: 100%; }
-.header {padding: 8px 0; border-bottom: 1px solid #e5e5e5; box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2); position: fixed; width: 100%; display: inline-block; background-color: white; }
-.header-menu-list-md { display: flex; position: relative; justify-content: space-between; }
-.header-menu-list-md .header-menu-list-item.logo { justify-content:flex-start; flex-grow: 5; }
-.header-menu-list-md .header-menu-list-item { display: flex; justify-content: center; align-items: center; flex-grow: 1; }
-.header-menu-list-md .header-menu-list-item:not(.logo) {text-transform: uppercase; font-size: 0.8em; }
-.header-menu-list-md .header-menu-list-item .icon.ion-person { font-size: 1.7em; }
-.body {background-color: #f8f8f8; min-height: 100%; height: auto; width: 100%; padding-top: 45px; }
+img { vertical-align: middle; border: 0; }
+nav { height: 64px; line-height: 64px; color: #121920; }
+nav ul li { float: left; padding: 0; transition: background-color .3s;}
+ul li { list-style-type: none; }
+nav ul a { font-size: 1rem; display: inline-block; padding: 0 15px; }
+.nav-wrapper { position: relative; height: 100%; }
+.header {border-bottom: 1px solid #e5e5e5; box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2); position: fixed; width: 100%; display: inline-block; background-color: #ffffff; }
+.body {background-color: #f8f8f8; min-height: 100%; height: auto; width: 100%; padding-top: 70px; }
 .row { display: table; clear: both; float: none; width: 100%; padding-top: 20px; padding-bottom: 40px; }
 .column { display: inline-block; float: left; vertical-align: top;}
 .column.col3 {width: 30%; }

@@ -16,6 +16,21 @@
 <body>
     <div class="header">
         <div class="container">
+            <nav>
+                <div class="nav-wrapper">
+                    <a class="brand-logo" href="{% url 'index' %}"><img class="cld-hidpi" data-src="{% static 'images/logo.png' %}" style="max-width: 48px" src="{% static 'images/logo.png' %}">
+</a>
+                    <ul class="fl-right">
+                        <li><a href="{% url 'jobs_list' %}">{% trans 'Liste des annonces' %}</a></li>
+                        <li><a href="#">{% trans 'Poster une annonce' %}</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">{% trans 'Se déconnecter' %}</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">{% trans 'Se connecter' %}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
             {% block headerContent %}{% endblock %}
         </div>
     </div>
