@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.widgets import SelectDateWidget
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from accounts.models import User
@@ -9,7 +10,9 @@ from accounts.models import Message
 
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirmer le mot de passe', widget=forms.PasswordInput)
+    birth_date = forms.DateField(widget=SelectDateWidget(years=range(2020, 1945, -1),empty_label=("Choose Year", "Choose Month", "Choose Day"),),)
+    field_order = ['first_name', 'last_name', 'email', 'password', 'password2']
 
     class Meta:
         model = User
@@ -29,6 +32,14 @@ class RegisterForm(forms.ModelForm):
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Passwords don't match")
         return password2
+
+    def save(self, commit=True):
+        # Save the provided password in hashed format
+        user = super(RegisterForm, self).save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        if commit:
+            user.save()
+        return user
 
 
 class UserAdminCreationForm(forms.ModelForm):
@@ -77,7 +88,7 @@ class UserAdminChangeForm(forms.ModelForm):
 
 
 class EnterpriseProfileForm(RegisterForm):
-    password = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
+    description = forms.CharField(widget=forms.Textarea)
 
     class Meta:
         model = Enterprise
@@ -85,7 +96,7 @@ class EnterpriseProfileForm(RegisterForm):
 
 
 class EmployeeProfileForm(RegisterForm):
-    password = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
+
 
     class Meta:
         model = Employee
@@ -93,7 +104,7 @@ class EmployeeProfileForm(RegisterForm):
 
 
 class StudentProfileForm(RegisterForm):
-    password = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
+    year = forms.DateField(widget=SelectDateWidget())
 
     class Meta:
         model = Student
@@ -102,21 +113,8 @@ class StudentProfileForm(RegisterForm):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(label='Courriel')
-    password = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
-
-    def clean(self):
-        cleaned_data = super(LoginForm, self).clean()
-        email = cleaned_data.get('email')
-        password = cleaned_data.get('password')
-
-        if email and password:
-            result = User.objects.filter(password=password, email=email)
-
-            if len(result) != 1:
-                raise forms.ValidationError("Adresse de courriel ou mot de passe erroné(e).")
-
-        return cleaned_data
+    email = forms.EmailField(label='Courriel', max_length=64)
+    password = forms.CharField(label='Mot de passe', widget=forms.PasswordInput())
 
 
 class MessageForm(forms.ModelForm):
