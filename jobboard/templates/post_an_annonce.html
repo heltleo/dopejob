@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Poster une annonce' %}{% endblock %}
+{% block bodyId %}postAnnonce{% endblock %}
+
+{% block content %}
+<div class="panel">
+    <div class="formset">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <input type="submit" class="button button-primary" value="{% trans 'Créer une annonce' %}" />
+        </form>
+
+    </div>
+
+
+</div>
+{% endblock %}

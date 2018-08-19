@@ -1,5 +1,5 @@
 * {box-sizing: border-box; margin: 0; padding: 0; list-style: none;}
-body {font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: normal; }
+body {font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: normal; overflow: hidden; position: relative;}
 .logo {font-weight: bold; font-size: 1.3em; color: black; text-transform: none; }
 strong { font-weight: bold; }
 a { text-decoration: none; color: #d5d5d5; }
@@ -12,7 +12,9 @@ ul li { list-style-type: none; }
 nav ul a { font-size: 1rem; display: inline-block; padding: 0 15px; }
 .nav-wrapper { position: relative; height: 100%; }
 .header {border-bottom: 1px solid #e5e5e5; box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2); position: fixed; width: 100%; display: inline-block; background-color: #ffffff; }
-.body {background-color: #f8f8f8; min-height: 100%; height: auto; width: 100%; padding-top: 70px; }
+.body {background-color: #f8f8f8; width: 100%; padding-top: 70px; }
+.wrapper { overflow-x: hidden; overflow-y: auto; height: 100%; width: 100%; }
+.footer { width: 100%; padding: 15px 0; }
 .row { display: table; clear: both; float: none; width: 100%; padding-top: 20px; padding-bottom: 40px; }
 .column { display: inline-block; float: left; vertical-align: top;}
 .column.col3 {width: 30%; }
