@@ -1,0 +1,60 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html lang="en">
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Rental cars between individuals.">
+    <meta name="author" content="Délita Makanda">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>dopejob - {% block title %}{% endblock %}{% block head_title %}{% endblock %}</title>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="{% static 'styles/app.css' %}" rel="stylesheet" />
+  </head>
+
+<body>
+    <main class="wrapper">
+        <div id="{% block bodyId %}genericPage{% endblock %}" class="body">
+            <div class="container">
+                {% if messages %}
+                <ul class="alert-container">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="alert-messages alert-{{ message.tags }}"{% endif %}>{{ message }}<span class="close-alert">x</span></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                &copy; 2018 - dopejob
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'vendors/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendors/jquery.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/app.js' %}"></script>
+
+    <script>
+    var csrftoken = $.cookie('csrftoken');
+    function csrfSafeMethod(method) {
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+    $(document).ready(function() {
+        {% block domready %}
+        {% endblock %}
+    });
+    </script>
+</body>
+
+</html>
