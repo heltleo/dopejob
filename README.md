@@ -1,4 +1,4 @@
-# dope job app [![CircleCI](https://circleci.com/gh/delitamakanda/dopejob/tree/master.svg?style=svg)](https://circleci.com/gh/delitamakanda/dopejob/tree/master)
+# dope job app [![CircleCI](https://circleci.com/gh/delitamakanda/activcar/tree/master.svg?style=svg)](https://circleci.com/gh/delitamakanda/activcar/tree/master)
 app for job finding in django framework
 
 ![Alt text](https://cdn.dribbble.com/users/272011/screenshots/2289607/dribbble_13oct.png)
