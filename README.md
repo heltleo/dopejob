@@ -28,7 +28,7 @@ install packages for django
 pip install -r requirements-dev.txt
 ```
 
-create a config file .env in your root folder, same level that manage.py with the content below
+create a config file .env in your root folder, same level than manage.py with the content below
 ```text
 SECRET_KEY=dummy_secret_key
 DEBUG=True
